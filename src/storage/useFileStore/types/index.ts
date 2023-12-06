@@ -8,6 +8,6 @@ export interface IFileStore {
 }
 
 export enum EFileStoreApiRoutes {
-	sendFiles = '/api/file/userId',
-	downloadArchive = '/api/file/userId',
+	sendFiles = '/api/archive',
+	downloadArchive = '/api/archive',
 }
