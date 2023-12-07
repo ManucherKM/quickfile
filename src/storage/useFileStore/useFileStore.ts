@@ -25,7 +25,7 @@ export const useFileStore = create<IFileStore>(() => ({
 			console.error(e)
 
 			// Return false.
-			return 'asd'
+			return false
 		}
 	},
 	async downloadArchive(id) {
