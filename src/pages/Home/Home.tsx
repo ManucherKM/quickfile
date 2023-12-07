@@ -60,6 +60,7 @@ export const Home: FC = () => {
 			<div className={classes.wrapper__content}>
 				<Title>Select files</Title>
 				<FileAdd
+					className={classes.fileAdd}
 					variant="area"
 					onChange={e => {
 						setSelectFiles(e.target.files)

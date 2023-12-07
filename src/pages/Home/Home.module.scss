@@ -12,7 +12,16 @@
 		gap: 20px;
 		max-width: 320px;
 		width: 100%;
-
 		height: 300px;
+
+		.fileAdd {
+			border: 2px dashed gray;
+			transition: all 300ms;
+
+			&:hover {
+				transition: all 300ms;
+				border-color: transparent;
+			}
+		}
 	}
 }
