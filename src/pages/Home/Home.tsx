@@ -61,7 +61,13 @@ export const Home: FC = () => {
 				<Title>Select files</Title>
 				<FileAdd
 					variant="area"
-					onChange={e => setSelectFiles(e.target.files)}
+					onChange={e => {
+						setSelectFiles(e.target.files)
+
+						setTimeout(() => {
+							e.target.value = ''
+						}, 100)
+					}}
 					multiple
 				/>
 			</div>
