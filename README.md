@@ -1,30 +1,20 @@
-# React + TypeScript + Vite
+![Banner](https://github.com/ManucherKM/quickfile/blob/master/preview/Banner.png?raw=true)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 💿 Quick file | Beta testing.
 
-Currently, two official plugins are available:
+[Demo](https://quickfile.vercel.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Languages and Tools
 
-## Expanding the ESLint configuration
+![TypeScript](https://img.shields.io/badge/-TypeScript-000?style=for-the-badge&logo=TypeScript&logoColor=3178C6)
+![React](https://img.shields.io/badge/-React-000?style=for-the-badge&logo=React&logoColor=5ed3f3)
+![Zustand](https://img.shields.io/badge/-Zustand-000?style=for-the-badge)
+![SCSS](https://img.shields.io/badge/-SCSS-000?style=for-the-badge&logo=sass&logoColor=CD6799)
+![KUUI](https://img.shields.io/badge/-KUUI-000?style=for-the-badge)
+![Axios](https://img.shields.io/badge/-axios-000?style=for-the-badge&logo=axios&logoColor=5728dd)
+![Vite](https://img.shields.io/badge/-Vite-000?style=for-the-badge&logo=Vite&logoColor=9d53f6)
+![Vercel](https://img.shields.io/badge/-Vercel-000?style=for-the-badge&logo=Vercel&logoColor=fff)
+![Git](https://img.shields.io/badge/-Git-000?style=for-the-badge&logo=Git&logoColor=e84d31)
+![Prettier](https://img.shields.io/badge/-Prettier-000?style=for-the-badge&logo=Prettier&logoColor=426675)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Preview
