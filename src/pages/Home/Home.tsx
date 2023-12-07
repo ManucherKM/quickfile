@@ -47,6 +47,8 @@ export const Home: FC = () => {
 		if (!selectFiles) return
 
 		sendHandler()
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [selectFiles])
 	return (
 		<div className={classes.root}>

@@ -15,7 +15,7 @@ export const useFileStore = create<IFileStore>(() => ({
 			}
 
 			const { data } = await axios.post<ISendFilesRes>(
-				EFileStoreApiRoutes.sendFiles,
+				EFileStoreApiRoutes.archiveManagement,
 				formData,
 			)
 
@@ -30,7 +30,7 @@ export const useFileStore = create<IFileStore>(() => ({
 	},
 	async downloadArchive(id) {
 		try {
-			const url = EFileStoreApiRoutes.downloadArchive + '/' + id
+			const url = EFileStoreApiRoutes.archiveManagement + '/' + id
 
 			const { data } = await axios.get<Buffer>(url, {
 				responseType: 'arraybuffer',
