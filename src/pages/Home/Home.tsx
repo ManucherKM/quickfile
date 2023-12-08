@@ -1,5 +1,4 @@
 import { env } from '@/config/env'
-import { ERoutes } from '@/config/routes'
 import { useLoader, useWindowFilesTransfer } from '@/hooks'
 import { useFileStore, useNotificationsStore } from '@/storage'
 import { writeTextIntoClipboard } from '@/utils'
@@ -33,7 +32,7 @@ export const Home: FC = () => {
 				return
 			}
 
-			const link = CLIENT_URL + ERoutes.download + '/' + id
+			const link = CLIENT_URL + '/' + id
 
 			await writeTextIntoClipboard(link)
 

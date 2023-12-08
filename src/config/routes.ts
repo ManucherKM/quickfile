@@ -8,7 +8,6 @@ export interface IRoute {
 
 export enum ERoutes {
 	home = '/',
-	download = '/download',
 }
 
 export const publicRoutes: IRoute[] = [
@@ -17,7 +16,7 @@ export const publicRoutes: IRoute[] = [
 		element: Home,
 	},
 	{
-		path: ERoutes.download + '/:id',
+		path: ERoutes.home + '/:id',
 		element: Download,
 	},
 ]
