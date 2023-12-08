@@ -5,6 +5,7 @@ import { writeTextIntoClipboard } from '@/utils'
 import { FileAdd, Title } from 'kuui-react'
 import type { FC } from 'react'
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import classes from './Home.module.scss'
 
 const CLIENT_URL = env.get('CLIENT_URL').required().asString()
@@ -16,6 +17,7 @@ export const Home: FC = () => {
 	const newError = useNotificationsStore(store => store.newError)
 	const newMessage = useNotificationsStore(store => store.newMessage)
 	const loader = useLoader()
+	const [t] = useTranslation('global')
 
 	async function sendHandler() {
 		try {
@@ -59,7 +61,7 @@ export const Home: FC = () => {
 				/>
 			)}
 			<div className={classes.wrapper__content}>
-				<Title>Select files</Title>
+				<Title>{t('select_files')}</Title>
 				<FileAdd
 					className={classes.fileAdd}
 					variant="area"

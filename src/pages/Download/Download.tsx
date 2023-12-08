@@ -2,12 +2,15 @@ import { useLoader } from '@/hooks'
 import { useFileStore, useNotificationsStore } from '@/storage'
 import { Button, Paragraph } from 'kuui-react'
 import type { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router'
 import classes from './Download.module.scss'
 
 export const Download: FC = () => {
 	// The identifier of the archive to download.
 	const { id } = useParams()
+
+	const [t] = useTranslation('global')
 
 	// Function to create a new error to show it to the user.
 	const newError = useNotificationsStore(store => store.newError)
@@ -36,10 +39,10 @@ export const Download: FC = () => {
 		<div className={classes.root}>
 			<div className={classes.wrapper__content}>
 				<Paragraph align="center">
-					To download the archive with files, click on the button.
+					{t('to_download_the_archive_with_files')}
 				</Paragraph>
 
-				<Button onClick={clickHandler}>Download</Button>
+				<Button onClick={clickHandler}>{t('download')}</Button>
 			</div>
 		</div>
 	)
