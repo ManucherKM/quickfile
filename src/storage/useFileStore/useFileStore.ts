@@ -22,7 +22,7 @@ export const useFileStore = create<IFileStore>(() => ({
 			return data.id
 		} catch (e) {
 			// We display the error in the console.
-			console.error(e)
+			console.log(e)
 
 			// Return false.
 			return false

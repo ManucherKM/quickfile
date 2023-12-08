@@ -4,8 +4,12 @@ import { resources } from './resources'
 
 const foundLang = getBrowserLanguage()
 
+const isLangNotExist: boolean = !resources[foundLang]
+
+const lng = isLangNotExist ? 'en' : foundLang
+
 i18next.init({
-	lng: foundLang,
+	lng,
 	resources: resources,
 })
 

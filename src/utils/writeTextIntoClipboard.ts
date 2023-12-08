@@ -12,7 +12,7 @@ export async function writeTextIntoClipboard(text: string) {
 		return true
 	} catch (e) {
 		// We show the error in the console.
-		console.error(e)
+		console.log(e)
 
 		// We raise the error to a higher level.
 		throw e

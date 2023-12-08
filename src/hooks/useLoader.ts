@@ -26,7 +26,7 @@ export function useLoader() {
 				return await fetch(...args)
 			} catch (e) {
 				// If an error occurs, display it in the console.
-				console.error(e)
+				console.log(e)
 			} finally {
 				// Remove Loader.
 				setLoading(false)
