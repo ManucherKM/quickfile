@@ -1,3 +1,5 @@
+'use client'
+
 /**
  * With this function you can put text into the user's buffer.
  *

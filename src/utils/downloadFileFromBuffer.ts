@@ -1,3 +1,5 @@
+'use client'
+
 /**
  * Using this function, you can install the file within the browser.
  *

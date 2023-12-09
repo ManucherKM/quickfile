@@ -1,3 +1,5 @@
+'use client'
+
 // Utils
 import { useStore } from '@/storage'
 import { useCallback } from 'react'
