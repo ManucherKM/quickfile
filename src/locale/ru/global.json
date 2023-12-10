@@ -2,5 +2,8 @@
 	"code": "ru",
 	"select_files": "Выберите файлы",
 	"to_download_the_archive_with_files": "Чтобы скачать архив с файлами, нажмите на кнопку",
-	"download": "Скачать"
+	"download": "Скачать",
+	"link_copied_to_clipboard": "Ссылка скопирована в буфер обмена",
+	"failed_to_save_file(s)": "Не удалось сохранить файл(ы)",
+	"failed_to_download_archive": "Не удалось загрузить архив"
 }

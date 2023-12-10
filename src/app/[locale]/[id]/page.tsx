@@ -3,6 +3,7 @@
 import { useLoader } from '@/hooks'
 import { useFileStore, useNotificationsStore } from '@/storage'
 import { Button, Paragraph } from 'kuui-react'
+import { useTranslations } from 'next-intl'
 import type { FC } from 'react'
 import classes from './Download.module.scss'
 
@@ -16,6 +17,8 @@ const Download: FC<IDownload> = ({ params: { id } }) => {
 
 	// Function for downloading an archive from the API.
 	const downloadArchive = useFileStore(store => store.downloadArchive)
+
+	const t = useTranslations()
 
 	// A function for showing Loader to the user when requesting an API.
 	const loader = useLoader()
@@ -31,17 +34,17 @@ const Download: FC<IDownload> = ({ params: { id } }) => {
 		// If the archive could not be downloaded.
 		if (!isSuccess) {
 			// Show the user an error message.
-			newError('Failed to download archive.')
+			newError(t('failed_to_download_archive'))
 		}
 	}
 	return (
 		<div className={classes.root}>
 			<div className={classes.wrapper__content}>
 				<Paragraph align="center">
-					To download the archive with files, click on the button
+					{t('to_download_the_archive_with_files')}
 				</Paragraph>
 
-				<Button onClick={clickHandler}>Download</Button>
+				<Button onClick={clickHandler}>{t('download')}</Button>
 			</div>
 		</div>
 	)

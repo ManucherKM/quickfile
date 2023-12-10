@@ -2,5 +2,8 @@
 	"code": "fa",
 	"select_files": "فایل ها را انتخاب کنید",
 	"to_download_the_archive_with_files": "برای دانلود آرشیو با فایل ها بر روی دکمه کلیک کنید",
-	"download": "دانلود"
+	"download": "دانلود",
+	"link_copied_to_clipboard": "پیوند در کلیپ بورد کپی شد",
+	"failed_to_save_file(s)": "فایل(های) ذخیره نشد",
+	"failed_to_download_archive": "بایگانی بارگیری نشد"
 }

@@ -2,5 +2,8 @@
 	"code": "fr",
 	"select_files": "Sélectionner les fichiers",
 	"to_download_the_archive_with_files": "Pour télécharger l'archive avec les fichiers, cliquez sur le bouton",
-	"download": "Télécharger"
+	"download": "Télécharger",
+	"link_copied_to_clipboard": "Lien copié dans le presse-papiers",
+	"failed_to_save_file(s)": "Échec de l'enregistrement du/des fichier(s)",
+	"failed_to_download_archive": "Échec du téléchargement de l'archive"
 }

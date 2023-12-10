@@ -2,5 +2,8 @@
 	"code": "it",
 	"select_files": "Selezionare i file",
 	"to_download_the_archive_with_files": "Per scaricare l'archivio con i file, fare clic sul pulsante",
-	"download": "Scaricare"
+	"download": "Scaricare",
+	"link_copied_to_clipboard": "Link copiato negli appunti",
+	"failed_to_save_file(s)": "Impossibile salvare i file",
+	"failed_to_download_archive": "Impossibile scaricare l'archivio"
 }
