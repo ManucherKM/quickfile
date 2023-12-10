@@ -1,0 +1,16 @@
+.root {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+
+	.wrapper__content {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		align-items: center;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}

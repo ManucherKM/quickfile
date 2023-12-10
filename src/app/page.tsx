@@ -5,7 +5,6 @@ import { useLoader, useWindowFilesTransfer } from '@/hooks'
 import { useFileStore, useNotificationsStore } from '@/storage'
 import { writeTextIntoClipboard } from '@/utils'
 import { FileAdd, Title } from 'kuui-react'
-import { useTranslations } from 'next-intl'
 import type { FC } from 'react'
 import { useEffect, useState } from 'react'
 import classes from './Home.module.scss'
@@ -19,7 +18,6 @@ const Home: FC = () => {
 	const newError = useNotificationsStore(store => store.newError)
 	const newMessage = useNotificationsStore(store => store.newMessage)
 	const loader = useLoader()
-	const t = useTranslations()
 
 	async function sendHandler() {
 		try {
@@ -63,7 +61,7 @@ const Home: FC = () => {
 				/>
 			)}
 			<div className={classes.wrapper__content}>
-				<Title>{t('select_files')}</Title>
+				<Title>Select files</Title>
 				<FileAdd
 					className={classes.fileAdd}
 					variant="area"
