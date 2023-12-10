@@ -2,5 +2,8 @@
 	"code": "es",
 	"select_files": "Seleccionar archivos",
 	"to_download_the_archive_with_files": "Para descargar el archivo con los ficheros, pulse el botón",
-	"download": "Descargar"
+	"download": "Descargar",
+	"link_copied_to_clipboard": "Enlace copiado en el portapapeles",
+	"failed_to_save_file(s)": "No se han podido guardar los archivos",
+	"failed_to_download_archive": "Error al descargar el archivo"
 }

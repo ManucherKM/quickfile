@@ -2,5 +2,8 @@
 	"code": "zh",
 	"select_files": "选择文件",
 	"to_download_the_archive_with_files": "要下载文件存档，请单击按钮",
-	"download": "下载"
+	"download": "下载",
+	"link_copied_to_clipboard": "链接复制到剪贴板",
+	"failed_to_save_file(s)": "保存文件失败",
+	"failed_to_download_archive": "下载存档失败"
 }

@@ -2,5 +2,8 @@
 	"code": "tr",
 	"select_files": "Dosyaları seçin",
 	"to_download_the_archive_with_files": "Dosyaların bulunduğu arşivi indirmek için butona tıklayın",
-	"download": "İndir"
+	"download": "İndir",
+	"link_copied_to_clipboard": "Panoya kopyalanan bağlantı",
+	"failed_to_save_file(s)": "Dosya(lar) kaydedilemedi",
+	"failed_to_download_archive": "Arşiv indirilemedi"
 }

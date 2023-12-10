@@ -2,5 +2,8 @@
 	"code": "de",
 	"select_files": "Dateien auswählen",
 	"to_download_the_archive_with_files": "Um das Archiv mit den Dateien herunterzuladen, klicken Sie auf die Schaltfläche",
-	"download": "Herunterladen"
+	"download": "Herunterladen",
+	"link_copied_to_clipboard": "Link in die Zwischenablage kopiert",
+	"failed_to_save_file(s)": "Datei(en) konnte(n) nicht gespeichert werden",
+	"failed_to_download_archive": "Download des Archivs fehlgeschlagen"
 }

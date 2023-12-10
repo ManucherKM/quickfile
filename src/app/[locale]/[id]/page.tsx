@@ -1,22 +1,24 @@
+'use client'
+
 import { useLoader } from '@/hooks'
 import { useFileStore, useNotificationsStore } from '@/storage'
 import { Button, Paragraph } from 'kuui-react'
+import { useTranslations } from 'next-intl'
 import type { FC } from 'react'
-import { useTranslation } from 'react-i18next'
-import { useParams } from 'react-router'
 import classes from './Download.module.scss'
 
-export const Download: FC = () => {
-	// The identifier of the archive to download.
-	const { id } = useParams()
+export interface IDownload {
+	params: { id: string }
+}
 
-	const [t] = useTranslation('global')
-
+const Download: FC<IDownload> = ({ params: { id } }) => {
 	// Function to create a new error to show it to the user.
 	const newError = useNotificationsStore(store => store.newError)
 
 	// Function for downloading an archive from the API.
 	const downloadArchive = useFileStore(store => store.downloadArchive)
+
+	const t = useTranslations()
 
 	// A function for showing Loader to the user when requesting an API.
 	const loader = useLoader()
@@ -32,7 +34,7 @@ export const Download: FC = () => {
 		// If the archive could not be downloaded.
 		if (!isSuccess) {
 			// Show the user an error message.
-			newError('Failed to download archive.')
+			newError(t('failed_to_download_archive'))
 		}
 	}
 	return (
@@ -47,3 +49,5 @@ export const Download: FC = () => {
 		</div>
 	)
 }
+
+export default Download

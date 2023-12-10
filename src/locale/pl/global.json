@@ -2,5 +2,8 @@
 	"code": "pl",
 	"select_files": "Wybierz pliki",
 	"to_download_the_archive_with_files": "Aby pobrać archiwum z plikami, kliknij przycisk",
-	"download": "Pobierz"
+	"download": "Pobierz",
+	"link_copied_to_clipboard": "Link skopiowany do schowka",
+	"failed_to_save_file(s)": "Nie udało się zapisać plików",
+	"failed_to_download_archive": "Nie udało się pobrać archiwum"
 }

@@ -2,5 +2,8 @@
 	"code": "en",
 	"select_files": "Select files",
 	"to_download_the_archive_with_files": "To download the archive with files, click on the button",
-	"download": "Download"
+	"download": "Download",
+	"link_copied_to_clipboard": "Link copied to clipboard",
+	"failed_to_save_file(s)": "Failed to save file(s)",
+	"failed_to_download_archive": "Failed to download archive"
 }

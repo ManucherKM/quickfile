@@ -8,6 +8,6 @@ import { from } from 'env-var'
  * 	const API_URL = env.get('API_URL').required().asString()
  */
 export const env = from({
-	API_URL: import.meta.env.VITE_API_URL,
-	CLIENT_URL: import.meta.env.VITE_CLIENT_URL,
+	API_URL: process.env.NEXT_PUBLIC_API_URL,
+	CLIENT_URL: process.env.NEXT_PUBLIC_CLIENT_URL,
 })
