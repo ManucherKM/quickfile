@@ -6,13 +6,16 @@ import { useFileStore, useNotificationsStore } from '@/storage'
 import { writeTextIntoClipboard } from '@/utils'
 import { FileAdd, Title } from 'kuui-react'
 import { useTranslations } from 'next-intl'
-import type { FC } from 'react'
 import { useEffect, useState } from 'react'
 import classes from './Home.module.scss'
 
 const CLIENT_URL = env.get('CLIENT_URL').required().asString()
 
-const Home: FC = () => {
+export interface IHome {
+	params: { locale: string }
+}
+
+function Home({ params: { locale } }: IHome) {
 	const [isDrag, setIsDrag] = useWindowFilesTransfer(false)
 	const [selectFiles, setSelectFiles] = useState<FileList | null>(null)
 	const sendFiles = useFileStore(store => store.sendFiles)
@@ -36,7 +39,7 @@ const Home: FC = () => {
 				return
 			}
 
-			const link = CLIENT_URL + '/' + id
+			const link = CLIENT_URL + '/' + locale + '/' + id
 
 			await writeTextIntoClipboard(link)
 
