@@ -38,7 +38,7 @@ const Download: FC<IDownload> = ({ params: { id } }) => {
 		}
 	}
 	return (
-		<div className={classes.root}>
+		<main className={classes.root}>
 			<div className={classes.wrapper__content}>
 				<Paragraph align="center">
 					{t('to_download_the_archive_with_files')}
@@ -46,7 +46,7 @@ const Download: FC<IDownload> = ({ params: { id } }) => {
 
 				<Button onClick={clickHandler}>{t('download')}</Button>
 			</div>
-		</div>
+		</main>
 	)
 }
 

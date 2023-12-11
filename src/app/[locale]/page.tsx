@@ -57,30 +57,32 @@ function Home({ params: { locale } }: IHome) {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [selectFiles])
 	return (
-		<div className={classes.root}>
-			{isDrag && (
-				<FileAdd
-					variant="dragAndDrop"
-					onClose={() => setIsDrag(false)}
-					onChangeFiles={setSelectFiles}
-				/>
-			)}
-			<div className={classes.wrapper__content}>
-				<Title>{t('select_files')}</Title>
-				<FileAdd
-					className={classes.fileAdd}
-					variant="area"
-					onChange={e => {
-						setSelectFiles(e.target.files)
+		<>
+			<main className={classes.root}>
+				{isDrag && (
+					<FileAdd
+						variant="dragAndDrop"
+						onClose={() => setIsDrag(false)}
+						onChangeFiles={setSelectFiles}
+					/>
+				)}
+				<div className={classes.wrapper__content}>
+					<Title>{t('select_files')}</Title>
+					<FileAdd
+						className={classes.fileAdd}
+						variant="area"
+						onChange={e => {
+							setSelectFiles(e.target.files)
 
-						setTimeout(() => {
-							e.target.value = ''
-						}, 100)
-					}}
-					multiple
-				/>
-			</div>
-		</div>
+							setTimeout(() => {
+								e.target.value = ''
+							}, 100)
+						}}
+						multiple
+					/>
+				</div>
+			</main>
+		</>
 	)
 }
 
