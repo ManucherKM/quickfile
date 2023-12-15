@@ -45,4 +45,17 @@ export const useFileStore = create<IFileStore>(() => ({
 			return false
 		}
 	},
+	async checkExistArchive(id) {
+		try {
+			const url = EFileStoreApiRoutes.checkExistArchive + '/' + id
+
+			const { data } = await axios.get<{ exist: boolean }>(url)
+
+			return data.exist
+		} catch (e) {
+			console.log(e)
+
+			return false
+		}
+	},
 }))

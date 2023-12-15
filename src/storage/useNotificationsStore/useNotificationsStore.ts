@@ -11,6 +11,15 @@ export const useNotificationsStore = create<INotificationsStore>(
 	(set, get) => ({
 		...defaultNotificationsStore,
 		newMessage(text) {
+			const idx = get().notifications.findIndex(n => {
+				const isMessage = n.variant === ENotificationVariant.message
+				const isSameText = n.text === text
+
+				return isMessage && isSameText
+			})
+
+			if (idx !== -1) return
+
 			const message: INotification = {
 				text,
 				variant: ENotificationVariant.message,
@@ -19,6 +28,15 @@ export const useNotificationsStore = create<INotificationsStore>(
 			set(prev => ({ notifications: [...prev.notifications, message] }))
 		},
 		newError(text) {
+			const idx = get().notifications.findIndex(n => {
+				const isError = n.variant === ENotificationVariant.error
+				const isSameText = n.text === text
+
+				return isError && isSameText
+			})
+
+			if (idx !== -1) return
+
 			const error: INotification = {
 				text,
 				variant: ENotificationVariant.error,
