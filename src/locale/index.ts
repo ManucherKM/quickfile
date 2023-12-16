@@ -1,18 +1,3 @@
-export const availableLocales = [
-	'en',
-	'de',
-	'es',
-	'fr',
-	'fa',
-	'it',
-	'ja',
-	'pl',
-	'pt',
-	'ru',
-	'tr',
-	'zh',
-]
-
 import { AbstractIntlMessages } from 'next-intl'
 import de from './de/global.json'
 import en from './en/global.json'
@@ -27,7 +12,7 @@ import ru from './ru/global.json'
 import tr from './tr/global.json'
 import zh from './zh/global.json'
 
-const arrLocales = [en, de, es, fa, fr, it, ja, pl, pt, ru, zh, tr]
+export const arrLocales = [en, de, es, fa, fr, it, ja, pl, pt, ru, zh, tr]
 
 const localesInit: AbstractIntlMessages = {}
 
@@ -36,3 +21,18 @@ for (const { code, ...other } of arrLocales) {
 }
 
 export const locales = localesInit
+
+export const availableLocales = [
+	'en',
+	'de',
+	'es',
+	'fr',
+	'fa',
+	'it',
+	'ja',
+	'pl',
+	'pt',
+	'ru',
+	'tr',
+	'zh',
+]

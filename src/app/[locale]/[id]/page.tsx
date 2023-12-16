@@ -55,7 +55,7 @@ const Download: FC<IDownload> = ({ params: { id } }) => {
 		}
 
 		fetchData()
-		
+
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 	return (
