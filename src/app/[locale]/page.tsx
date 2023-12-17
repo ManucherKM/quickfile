@@ -3,9 +3,9 @@
 import { env } from '@/config/env'
 import { useLoader, useWindowFilesTransfer } from '@/hooks'
 import { useFileStore, useNotificationsStore } from '@/storage'
-import { writeTextIntoClipboard } from '@/utils'
 import { FileAdd, Title } from 'kuui-react'
 import { useTranslations } from 'next-intl'
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import classes from './Home.module.scss'
 
@@ -22,13 +22,12 @@ function Home({ params: { locale } }: IHome) {
 	const newError = useNotificationsStore(store => store.newError)
 	const newMessage = useNotificationsStore(store => store.newMessage)
 	const loader = useLoader()
+	const router = useRouter()
 	const t = useTranslations()
 
 	async function sendHandler() {
 		try {
-			if (!selectFiles) {
-				return
-			}
+			if (!selectFiles) return
 
 			const id = await loader(sendFiles, selectFiles)
 
@@ -39,11 +38,9 @@ function Home({ params: { locale } }: IHome) {
 				return
 			}
 
-			const link = CLIENT_URL + '/' + locale + '/' + id
+			newMessage('The files have been saved.')
 
-			await writeTextIntoClipboard(link)
-
-			newMessage(t('link_copied_to_clipboard'))
+			router.push(`/${locale}/share/${id}`)
 		} catch (e) {
 			console.log(e)
 		}

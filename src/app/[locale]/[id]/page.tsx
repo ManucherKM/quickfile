@@ -1,12 +1,10 @@
 'use client'
 
 import { useLoader } from '@/hooks'
-import { defaultLocale } from '@/middleware'
 import { useFileStore, useNotificationsStore } from '@/storage'
 import { Button, Paragraph } from 'kuui-react'
 import { useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
-import { useEffect, type FC } from 'react'
+import { type FC } from 'react'
 import classes from './Download.module.scss'
 
 export interface IDownload {
@@ -19,10 +17,6 @@ const Download: FC<IDownload> = ({ params: { id } }) => {
 
 	// Function for downloading an archive from the API.
 	const downloadArchive = useFileStore(store => store.downloadArchive)
-
-	const checkExistArchive = useFileStore(store => store.checkExistArchive)
-
-	const redirect = useRouter()
 
 	const t = useTranslations()
 
@@ -44,20 +38,6 @@ const Download: FC<IDownload> = ({ params: { id } }) => {
 		}
 	}
 
-	useEffect(() => {
-		const fetchData = async () => {
-			const isExist = await checkExistArchive(id)
-
-			if (!isExist) {
-				newError('Failed to find the archive')
-				redirect.push(`/${defaultLocale}`)
-			}
-		}
-
-		fetchData()
-
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [])
 	return (
 		<main className={classes.root}>
 			<div className={classes.wrapper__content}>
