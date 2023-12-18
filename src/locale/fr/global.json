@@ -7,5 +7,10 @@
 	"download": "Télécharger",
 	"link_copied_to_clipboard": "Lien copié dans le presse-papiers",
 	"failed_to_save_file(s)": "Échec de l'enregistrement du/des fichier(s)",
-	"failed_to_download_archive": "Échec du téléchargement de l'archive"
+	"failed_to_download_archive": "Échec du téléchargement de l'archive",
+	"the_files_have_been_saved": "Les fichiers ont été enregistrés",
+	"files_are_stored_on_the_server_for_one_week_after_which_they_are_permanently_deleted": "Les fichiers sont stockés sur le serveur pendant une semaine, après quoi ils sont définitivement supprimés",
+	"failed_to_copy_text_to_clipboard": "Échec de la copie du texte dans le presse-papiers",
+	"or": "ou",
+	"copy_link": "Copier le lien"
 }

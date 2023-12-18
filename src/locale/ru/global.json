@@ -7,5 +7,10 @@
 	"download": "Скачать",
 	"link_copied_to_clipboard": "Ссылка скопирована в буфер обмена",
 	"failed_to_save_file(s)": "Не удалось сохранить файл(ы)",
-	"failed_to_download_archive": "Не удалось загрузить архив"
+	"failed_to_download_archive": "Не удалось загрузить архив",
+	"the_files_have_been_saved": "Файлы были сохранены",
+	"files_are_stored_on_the_server_for_one_week_after_which_they_are_permanently_deleted": "Файлы хранятся на сервере в течение одной недели, после чего безвозвратно удаляются",
+	"failed_to_copy_text_to_clipboard": "Не удалось скопировать текст в буфер обмена",
+	"or": "или",
+	"copy_link": "Скопировать ссылку"
 }

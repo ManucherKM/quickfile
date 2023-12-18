@@ -2,6 +2,8 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+		'Liberation Mono', 'Courier New', monospace !important;
 }
 
 body {
@@ -10,5 +12,6 @@ body {
 	padding-right: 20px;
 	width: 100%;
 	height: 100vh;
-	font-family: var(--kuui-NotoSansMono);
+	overflow: hidden;
+	// font-family: var(--kuui-NotoSansMono);
 }

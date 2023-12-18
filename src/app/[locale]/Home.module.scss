@@ -23,5 +23,38 @@
 				border-color: transparent;
 			}
 		}
+
+		.info {
+			.title {
+				user-select: none;
+			}
+
+			display: flex;
+			gap: 8px;
+
+			svg {
+				cursor: pointer;
+
+				circle {
+					stroke: var(--kuui-black-250);
+					fill: var(--kuui-black-250);
+				}
+
+				path {
+					stroke: var(--kuui-black-250);
+				}
+
+				&:hover {
+					circle {
+						stroke: var(--kuui-dominant-1);
+						fill: var(--kuui-dominant-1);
+					}
+
+					path {
+						stroke: var(--kuui-dominant-1);
+					}
+				}
+			}
+		}
 	}
 }

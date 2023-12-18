@@ -12,12 +12,13 @@
 	"dependencies": {
 		"axios": "^1.6.2",
 		"env-var": "^7.4.1",
-		"kuui-react": "^0.0.70",
+		"kuui-react": "^0.0.79",
 		"next": "14.0.4",
 		"next-intl": "^3.3.1",
 		"react": "^18",
 		"react-dom": "^18",
 		"react-qr-rounded": "^1.0.0",
+		"sharp": "^0.33.1",
 		"zustand": "^4.4.7"
 	},
 	"devDependencies": {
