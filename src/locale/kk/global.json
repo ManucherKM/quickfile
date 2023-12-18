@@ -1,0 +1,16 @@
+{
+	"code": "kk",
+	"quickfile_fast_and_convenient_file_transfer": "QuickFile-файлдарды жылдам және оңай тасымалдау",
+	"quickfile_is_an_online_service_for_fast_and_easy_file_transfer_forget_about_complicated_registration_procedures_and_file_size_restrictions_with_quickfile_you_can_easily_and_instantly_send_files_to_any_recipient_directly_from_your_browser_share_documents_images_audio_and_video_files_seamlessly_quick_file_is_your_reliable_tool_for_fast_file_sharing": "QuickFile-файлдарды жылдам және оңай тасымалдауға арналған онлайн қызмет. Күрделі тіркеу процедуралары мен файл өлшемінің шектеулерін ұмытыңыз. QuickFile көмегімен сіз кез-келген алушыға файлдарды тікелей шолғыштан оңай және лезде жібере аласыз. Құжаттарды, суреттерді, аудио және бейне файлдарды оңай бөлісіңіз. Quick File-бұл файлдарды жылдам бөлісуге арналған сенімді құрал!",
+	"select_files": "Файлдарды таңдаңыз",
+	"to_download_the_archive_with_files": "Мұрағатты файлдармен жүктеу үшін түймесін басыңыз",
+	"download": "Жүктеу",
+	"link_copied_to_clipboard": "Сілтеме алмасу буферіне көшірілді",
+	"failed_to_save_file(s)": "Файлды(ларды)сақтау мүмкін болмады",
+	"failed_to_download_archive": "Мұрағатты жүктеу мүмкін болмады",
+	"the_files_have_been_saved": "Файлдар сақталды",
+	"files_are_stored_on_the_server_for_one_week_after_which_they_are_permanently_deleted": "Файлдар серверде бір апта сақталады, содан кейін олар біржола жойылады",
+	"failed_to_copy_text_to_clipboard": "Мәтінді алмасу буферіне көшіру мүмкін болмады",
+	"or": "немесе",
+	"copy_link": "Сілтемені көшіру"
+}
