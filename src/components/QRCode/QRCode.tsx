@@ -1,4 +1,4 @@
-import logo from '@/app/icon.png'
+import logo from '@/assets/img/logo.png'
 import Image from 'next/image'
 import { FC } from 'react'
 import { QR } from 'react-qr-rounded'

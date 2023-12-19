@@ -12,5 +12,7 @@
 	"files_are_stored_on_the_server_for_one_week_after_which_they_are_permanently_deleted": "Die Dateien werden eine Woche lang auf dem Server gespeichert, danach werden sie endgültig gelöscht.",
 	"failed_to_copy_text_to_clipboard": "Text konnte nicht in die Zwischenablage kopiert werden",
 	"or": "oder",
-	"copy_link": "Link kopieren"
+	"copy_link": "Link kopieren",
+	"the_file_could_not_be_found": "Die Datei konnte nicht gefunden werden",
+	"unexpected_server_error": "Unerwarteter Serverfehler"
 }

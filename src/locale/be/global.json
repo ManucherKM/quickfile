@@ -12,5 +12,7 @@
 	"files_are_stored_on_the_server_for_one_week_after_which_they_are_permanently_deleted": "Файлы захоўваюцца на серверы на працягу аднаго тыдня, пасля чаго яны выдаляюцца незваротна",
 	"failed_to_copy_text_to_clipboard": "Не атрымалася скапіяваць тэкст у буфер абмену",
 	"or": "або",
-	"copy_link": "Скапіяваць спасылку"
+	"copy_link": "Скапіяваць спасылку",
+	"the_file_could_not_be_found": "Файл не ўдалося знайсці",
+	"unexpected_server_error": "Нечаканая памылка сервера"
 }
