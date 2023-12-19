@@ -59,6 +59,8 @@ const Download: FC<IDownload> = ({ params: { id, locale } }) => {
 		}
 
 		fetchFile()
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 	return (
 		<main className={classes.root}>

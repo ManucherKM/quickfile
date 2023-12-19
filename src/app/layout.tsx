@@ -1,18 +1,13 @@
 import '@/assets/styles/index.scss'
+import { defaultLocale } from '@/middleware'
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { ReactNode } from 'react'
 import AppleIcon from './apple-touch-icon.png'
 import Favicon from './favicon.ico'
 
-export interface IGenerateMetadata {
-	params: { locale: string }
-}
-
-export async function generateMetadata({
-	params: { locale },
-}: IGenerateMetadata) {
-	const t = await getTranslations({ locale })
+export async function generateMetadata() {
+	const t = await getTranslations({ locale: defaultLocale })
 
 	return {
 		title: t('quickfile_fast_and_convenient_file_transfer'),
@@ -31,12 +26,9 @@ export interface IRootLayout {
 	params: { locale: string }
 }
 
-export default function RootLayout({
-	children,
-	params: { locale },
-}: IRootLayout) {
+export default function RootLayout({ children }: IRootLayout) {
 	return (
-		<html lang={locale}>
+		<html lang={defaultLocale}>
 			<body>{children}</body>
 		</html>
 	)

@@ -53,6 +53,8 @@ export default function Share({ params: { id, locale } }: IShare) {
 		}
 
 		fetchFile()
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 	return (
 		<div className={classes.root}>
