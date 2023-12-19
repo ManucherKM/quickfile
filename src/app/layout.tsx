@@ -23,7 +23,6 @@ export async function generateMetadata() {
 
 export interface IRootLayout {
 	children: ReactNode
-	params: { locale: string }
 }
 
 export default function RootLayout({ children }: IRootLayout) {
