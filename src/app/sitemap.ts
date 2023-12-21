@@ -8,15 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 	const locales: MetadataRoute.Sitemap = availableLocales.map(locale => ({
 		url: CLIENT_URL + '/' + locale,
 		lastModified: new Date(),
-		priority: 0.9,
 	}))
 
-	return [
-		{
-			url: CLIENT_URL,
-			lastModified: new Date(),
-			priority: 1,
-		},
-		...locales,
-	]
+	return [...locales]
 }
