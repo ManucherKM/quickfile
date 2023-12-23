@@ -1,7 +1,7 @@
 'use client'
 
 import { useLoader } from '@/hooks'
-import { useFileStore, useNotificationsStore } from '@/storage'
+import { useFileStore, useNotificationsStore, useStore } from '@/storage'
 import { Button, Paragraph } from 'kuui-react'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
@@ -18,6 +18,8 @@ const Download: FC<IDownload> = ({ params: { id, locale } }) => {
 
 	// Function for downloading an archive from the API.
 	const downloadArchive = useFileStore(store => store.downloadArchive)
+
+	const setLoading = useStore(store => store.setLoading)
 
 	const checkExistArchive = useFileStore(store => store.checkExistArchive)
 
@@ -46,6 +48,7 @@ const Download: FC<IDownload> = ({ params: { id, locale } }) => {
 	useEffect(() => {
 		const fetchFile = async () => {
 			try {
+				setLoading(true)
 				const isSuccess = await checkExistArchive(id)
 
 				if (!isSuccess) {
@@ -55,6 +58,8 @@ const Download: FC<IDownload> = ({ params: { id, locale } }) => {
 			} catch (e) {
 				newError(t('unexpected_server_error'))
 				console.log(e)
+			} finally {
+				setLoading(false)
 			}
 		}
 

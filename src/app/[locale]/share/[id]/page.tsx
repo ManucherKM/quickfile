@@ -2,7 +2,7 @@
 
 import { QRCode } from '@/components'
 import { env } from '@/config/env'
-import { useFileStore, useNotificationsStore } from '@/storage'
+import { useFileStore, useNotificationsStore, useStore } from '@/storage'
 import { writeTextIntoClipboard } from '@/utils'
 import { Button } from 'kuui-react'
 import { useTranslations } from 'next-intl'
@@ -20,6 +20,8 @@ export default function Share({ params: { id, locale } }: IShare) {
 	const newError = useNotificationsStore(store => store.newError)
 	const newMessage = useNotificationsStore(store => store.newMessage)
 	const t = useTranslations()
+
+	const setLoading = useStore(store => store.setLoading)
 
 	const checkExistArchive = useFileStore(store => store.checkExistArchive)
 
@@ -40,6 +42,8 @@ export default function Share({ params: { id, locale } }: IShare) {
 	useEffect(() => {
 		const fetchFile = async () => {
 			try {
+				setLoading(true)
+
 				const isSuccess = await checkExistArchive(id)
 
 				if (!isSuccess) {
@@ -49,6 +53,8 @@ export default function Share({ params: { id, locale } }: IShare) {
 			} catch (e) {
 				newError(t('unexpected_server_error'))
 				console.log(e)
+			} finally {
+				setLoading(false)
 			}
 		}
 
