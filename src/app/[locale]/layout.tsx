@@ -1,5 +1,6 @@
 import '@/assets/styles/index.scss'
 import { LoaderProvider, NotificationsProvider } from '@/components'
+import { env } from '@/config/env'
 import { availableLocales } from '@/locale'
 import { Metadata } from 'next'
 import { NextIntlClientProvider, useMessages } from 'next-intl'
@@ -10,6 +11,8 @@ import { ReactNode } from 'react'
 import AppleIcon from '../apple-touch-icon.png'
 import Favicon from '../favicon.ico'
 
+const CLIENT_URL = env.get('CLIENT_URL').required().asString()
+
 export interface IGenerateMetadata {
 	params: { locale: string }
 }
@@ -19,11 +22,22 @@ export async function generateMetadata({
 }: IGenerateMetadata) {
 	const t = await getTranslations({ locale })
 
+	const alternateLanguages = availableLocales.reduce(
+		(acc, locale) => ({
+			...acc,
+			[locale]: CLIENT_URL + '/' + locale,
+		}),
+		{},
+	)
+
 	return {
 		title: t('quickfile_fast_and_convenient_file_transfer'),
 		description: t(
 			'quickfile_is_an_online_service_for_fast_and_easy_file_transfer_forget_about_complicated_registration_procedures_and_file_size_restrictions_with_quickfile_you_can_easily_and_instantly_send_files_to_any_recipient_directly_from_your_browser_share_documents_images_audio_and_video_files_seamlessly_quick_file_is_your_reliable_tool_for_fast_file_sharing',
 		),
+		alternates: {
+			languages: alternateLanguages,
+		},
 		icons: [
 			{ rel: 'icon', url: Favicon.src },
 			{ rel: 'apple-touch-icon', url: AppleIcon.src },

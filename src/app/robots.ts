@@ -12,7 +12,7 @@ export default function robots(): MetadataRoute.Robots {
 		rules: {
 			userAgent: '*',
 			allow: allowLocale,
-			disallow: disallowLocale,
+			disallow: ['/$', ...disallowLocale],
 		},
 		sitemap: CLIENT_URL + '/sitemap.xml',
 	}
