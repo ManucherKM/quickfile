@@ -1,0 +1,46 @@
+.root {
+	width: 100%;
+	padding-top: 16px;
+	padding-bottom: 16px;
+	border-bottom: 1px solid var(--kuui-black-250);
+
+	.wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 8px;
+		width: 100%;
+		max-width: 1170px;
+		margin: 0 auto;
+
+		.logo {
+			cursor: pointer;
+			transition: all 200ms;
+
+			&:hover {
+				transition: all 200ms;
+				opacity: 0.8;
+			}
+		}
+
+		.list {
+			display: flex;
+			gap: 24px;
+
+			.listItem {
+				list-style: none;
+
+				a {
+					text-decoration: none;
+					color: var(--kuui-black-250);
+					transition: all 200ms;
+
+					&:hover {
+						transition: all 200ms;
+						color: var(--kuui-dominant-1);
+					}
+				}
+			}
+		}
+	}
+}
