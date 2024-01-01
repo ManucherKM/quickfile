@@ -14,5 +14,18 @@
 	"or": "ou",
 	"copy_link": "Copier le lien",
 	"the_file_could_not_be_found": "Le fichier n'a pas été trouvé",
-	"unexpected_server_error": "Erreur inattendue du serveur"
+	"unexpected_server_error": "Erreur inattendue du serveur",
+	"faq": "FAQ",
+	"what_file_formats_are_supported_by_file_sharing": "Quels sont les formats de fichiers pris en charge par le partage de fichiers ?",
+	"you_can_store_files_in_any_format_quickFile_saves_your_data_in_its_original_form_without_any_conversion": "Vous pouvez stocker des fichiers dans n'importe quel format. QuickFile enregistre vos données dans leur forme originale sans aucune conversion.",
+	"is_there_a_limit_on_the_size_of_files_that_can_be_uploaded": "Y a-t-il une limite à la taille des fichiers qui peuvent être téléchargés ?",
+	"the_file_sharing_service_has_a_limit_on_the_size_of_uploaded_files_which_is_up_to_500_MB_this_value_may_increase_with_how_often_and_how_many_people_use_quickfile": "Le service de partage de fichiers a une limite sur la taille des fichiers téléchargés, qui est jusqu'à 500 MB. Cette valeur peut augmenter en fonction de la fréquence et du nombre de personnes qui utilisent QuickFile.",
+	"how_long_will_my_files_be_stored_on_the_file_sharing_server": "Combien de temps mes fichiers seront-ils stockés sur le serveur de partage de fichiers ?",
+	"the_files_are_stored_on_quickfile_for_7_days_after_which_they_are_irretrievably_deleted_after_which_they_are_permanently_deleted": "Les fichiers sont stockés sur QuickFile pendant 7 jours, après quoi ils sont irrémédiablement effacés. après quoi ils sont définitivement effacés.",
+	"can_i_upload_and_download_multiple_files_at_the_same_time": "Puis-je télécharger plusieurs fichiers en même temps ?",
+	"yes_you_can_to_save_multiple_files_at_once_in_the_file_sharing_service_quickfile_you_can_select_multiple_files_at_once_by_clicking_the_plus_sign_or_by_or_move_the_selected_files_with_the_mouse_to_the_appropriate_area": "Oui, c'est possible. Pour enregistrer plusieurs fichiers à la fois dans le service de partage de fichiers QuickFile, vous pouvez sélectionner plusieurs fichiers à la fois en cliquant sur le signe plus ou en déplaçant les fichiers sélectionnés à l'aide de la souris dans la zone appropriée.",
+	"how_can_i_access_downloaded_files_from_any_device": "Comment puis-je accéder aux fichiers téléchargés à partir de n'importe quel appareil ?",
+	"to_access_the_files_from_any_device_you_need_to_click_on_the_link_to_the_archive_with_the_files_you_uploaded_to_quickfile_earlier_quickfile_previously": "Pour accéder aux fichiers à partir de n'importe quel appareil, vous devez cliquer sur le lien vers l'archive contenant les fichiers que vous avez téléchargés sur QuickFile précédemment. QuickFile précédemment.",
+	"what_kind_of_support_is_provided_in_case_of_problems_or_questions_when_using_file_sharing": "Quel type d'assistance est fourni en cas de problèmes ou de questions lors de l'utilisation du partage de fichiers ?",
+	"if_you_have_any_questions_recommendations_problems_using_quickfile_you_can_contact_us_at_quickfilesite@gmailcom": "Si vous avez des questions, des recommandations, des problèmes d'utilisation de QuickFile, vous pouvez nous contacter à quickfilesite@gmail.com."
 }

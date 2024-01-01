@@ -1,5 +1,9 @@
+'use client'
+
+import { addSmoothScrollToLinks, removeSmoothScrollToLinks } from '@/utils'
+import { useTranslations } from 'next-intl'
 import Link, { LinkProps } from 'next/link'
-import type { FC, ReactNode } from 'react'
+import { useEffect, type FC, type ReactNode } from 'react'
 import { List } from '..'
 import classes from './NavBar.module.scss'
 
@@ -8,20 +12,27 @@ export interface IListItem extends Omit<LinkProps, 'href'> {
 	href: string
 }
 
-const listItems: IListItem[] = [
-	{
-		href: '#FAQ',
-		content: 'FAQ',
-	},
-]
-
 export const NavBar: FC = () => {
+	const t = useTranslations()
+
+	const listItems: IListItem[] = [
+		{
+			href: '#FAQ',
+			content: t('faq'),
+		},
+	]
+
+	useEffect(() => {
+		addSmoothScrollToLinks()
+
+		return () => removeSmoothScrollToLinks()
+	}, [])
+
 	return (
 		<nav className={classes.root}>
 			<div className="container">
 				<div className={classes.wrapper}>
 					<svg
-						className={classes.logo}
 						width="40"
 						height="40"
 						viewBox="0 0 40 40"
@@ -34,7 +45,6 @@ export const NavBar: FC = () => {
 							fill="#BC98EA"
 						/>
 					</svg>
-
 					<ul className={classes.list}>
 						<List
 							arr={listItems}

@@ -14,5 +14,18 @@
 	"or": "oder",
 	"copy_link": "Link kopieren",
 	"the_file_could_not_be_found": "Die Datei konnte nicht gefunden werden",
-	"unexpected_server_error": "Unerwarteter Serverfehler"
+	"unexpected_server_error": "Unerwarteter Serverfehler",
+	"faq": "FAQ",
+	"what_file_formats_are_supported_by_file_sharing": "Welche Dateiformate werden von File Sharing unterstützt?",
+	"you_can_store_files_in_any_format_quickFile_saves_your_data_in_its_original_form_without_any_conversion": "Sie können Dateien in jedem beliebigen Format speichern. QuickFile speichert Ihre Daten in ihrer ursprünglichen Form ohne Konvertierung.",
+	"is_there_a_limit_on_the_size_of_files_that_can_be_uploaded": "Gibt es eine Begrenzung für die Größe der hochzuladenden Dateien?",
+	"the_file_sharing_service_has_a_limit_on_the_size_of_uploaded_files_which_is_up_to_500_MB_this_value_may_increase_with_how_often_and_how_many_people_use_quickfile": "Der Dateifreigabedienst hat eine Größenbeschränkung für hochgeladene Dateien, die bis zu 500 MB beträgt. Dieser Wert kann sich erhöhen, je nachdem, wie oft und wie viele Personen QuickFile nutzen.",
+	"how_long_will_my_files_be_stored_on_the_file_sharing_server": "Wie lange werden meine Dateien auf dem File-Sharing-Server gespeichert?",
+	"the_files_are_stored_on_quickfile_for_7_days_after_which_they_are_irretrievably_deleted_after_which_they_are_permanently_deleted": "Die Dateien werden 7 Tage lang auf QuickFile gespeichert, danach werden sie unwiederbringlich gelöscht. und danach werden sie endgültig gelöscht.",
+	"can_i_upload_and_download_multiple_files_at_the_same_time": "Kann ich mehrere Dateien gleichzeitig hoch- und herunterladen?",
+	"yes_you_can_to_save_multiple_files_at_once_in_the_file_sharing_service_quickfile_you_can_select_multiple_files_at_once_by_clicking_the_plus_sign_or_by_or_move_the_selected_files_with_the_mouse_to_the_appropriate_area": "Ja, das können Sie. Um mehrere Dateien gleichzeitig im Dateifreigabedienst QuickFile zu speichern, können Sie mehrere Dateien auf einmal auswählen, indem Sie auf das Pluszeichen oder auf klicken oder die ausgewählten Dateien mit der Maus in den entsprechenden Bereich verschieben.",
+	"how_can_i_access_downloaded_files_from_any_device": "Wie kann ich von jedem Gerät aus auf heruntergeladene Dateien zugreifen?",
+	"to_access_the_files_from_any_device_you_need_to_click_on_the_link_to_the_archive_with_the_files_you_uploaded_to_quickfile_earlier_quickfile_previously": "Um von einem beliebigen Gerät aus auf die Dateien zuzugreifen, müssen Sie auf den Link zu dem Archiv mit den Dateien klicken, die Sie zuvor in QuickFile hochgeladen haben. QuickFile zuvor.",
+	"what_kind_of_support_is_provided_in_case_of_problems_or_questions_when_using_file_sharing": "Welche Art von Unterstützung wird bei Problemen oder Fragen im Zusammenhang mit der gemeinsamen Nutzung von Dateien angeboten?",
+	"if_you_have_any_questions_recommendations_problems_using_quickfile_you_can_contact_us_at_quickfilesite@gmailcom": "Wenn Sie Fragen, Empfehlungen oder Probleme mit QuickFile haben, können Sie uns unter quickfilesite@gmail.com kontaktieren."
 }

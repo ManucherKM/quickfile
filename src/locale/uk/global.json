@@ -14,5 +14,18 @@
 	"or": "або",
 	"copy_link": "Скопіювати посилання",
 	"the_file_could_not_be_found": "Файл не вдалося знайти",
-	"unexpected_server_error": "Несподівана помилка сервера"
+	"unexpected_server_error": "Несподівана помилка сервера",
+	"faq": "Поширені запитання",
+	"what_file_formats_are_supported_by_file_sharing": "Які формати файлів підтримуються файлообмінниками?",
+	"you_can_store_files_in_any_format_quickFile_saves_your_data_in_its_original_form_without_any_conversion": "Ви можете зберігати файли у будь-якому форматі. QuickFile зберігає ваші дані в оригінальному вигляді без будь-яких перетворень.",
+	"is_there_a_limit_on_the_size_of_files_that_can_be_uploaded": "Чи є обмеження на розмір файлів, які можна завантажити?",
+	"the_file_sharing_service_has_a_limit_on_the_size_of_uploaded_files_which_is_up_to_500_MB_this_value_may_increase_with_how_often_and_how_many_people_use_quickfile": "Файлообмінник має обмеження на розмір завантажуваних файлів - до 500 МБ. Це значення може збільшуватися залежно від того, як часто і скільки людей користуються QuickFile.",
+	"how_long_will_my_files_be_stored_on_the_file_sharing_server": "Як довго мої файли зберігатимуться на файлообміннику?",
+	"the_files_are_stored_on_quickfile_for_7_days_after_which_they_are_irretrievably_deleted_after_which_they_are_permanently_deleted": "Файли зберігаються на QuickFile протягом 7 днів, після чого видаляються безповоротно. після чого видаляються назавжди.",
+	"can_i_upload_and_download_multiple_files_at_the_same_time": "Чи можу я завантажувати і вивантажувати кілька файлів одночасно?",
+	"yes_you_can_to_save_multiple_files_at_once_in_the_file_sharing_service_quickfile_you_can_select_multiple_files_at_once_by_clicking_the_plus_sign_or_by_or_move_the_selected_files_with_the_mouse_to_the_appropriate_area": "Так, ви можете. Щоб зберегти кілька файлів одночасно у файлообміннику QuickFile, ви можете виділити кілька файлів одночасно, натиснувши на знак плюс або на або перемістити вибрані файли мишею у відповідну область.",
+	"how_can_i_access_downloaded_files_from_any_device": "Як отримати доступ до завантажених файлів з будь-якого пристрою?",
+	"to_access_the_files_from_any_device_you_need_to_click_on_the_link_to_the_archive_with_the_files_you_uploaded_to_quickfile_earlier_quickfile_previously": "Щоб отримати доступ до файлів з будь-якого пристрою, вам потрібно перейти за посиланням на архів з файлами, які ви завантажили до QuickFile раніше. QuickFile раніше.",
+	"what_kind_of_support_is_provided_in_case_of_problems_or_questions_when_using_file_sharing": "Яка підтримка надається у разі виникнення проблем чи запитань під час використання файлообмінників?",
+	"if_you_have_any_questions_recommendations_problems_using_quickfile_you_can_contact_us_at_quickfilesite@gmailcom": "Якщо у вас виникли запитання, рекомендації, проблеми з використанням QuickFile, ви можете зв'язатися з нами за адресою quickfilesite@gmail.com."
 }

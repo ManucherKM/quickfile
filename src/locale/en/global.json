@@ -13,7 +13,19 @@
 	"failed_to_copy_text_to_clipboard": "Failed to copy text to clipboard",
 	"or": "or",
 	"copy_link": "Copy link",
-
 	"the_file_could_not_be_found": "The file could not be found",
-	"unexpected_server_error": "Unexpected server error"
+	"unexpected_server_error": "Unexpected server error",
+	"faq": "FAQ",
+	"what_file_formats_are_supported_by_file_sharing": "What file formats are supported by file sharing?",
+	"you_can_store_files_in_any_format_quickFile_saves_your_data_in_its_original_form_without_any_conversion": "You can store files in any format. QuickFile saves your data in its original form without any conversion.",
+	"is_there_a_limit_on_the_size_of_files_that_can_be_uploaded": "Is there a limit on the size of files that can be uploaded?",
+	"the_file_sharing_service_has_a_limit_on_the_size_of_uploaded_files_which_is_up_to_500_MB_this_value_may_increase_with_how_often_and_how_many_people_use_quickfile": "The file sharing service has a limit on the size of uploaded files, which is up to 500 MB. This value may increase with how often and how many people use QuickFile.",
+	"how_long_will_my_files_be_stored_on_the_file_sharing_server": "How long will my files be stored on the file sharing server?",
+	"the_files_are_stored_on_quickfile_for_7_days_after_which_they_are_irretrievably_deleted_after_which_they_are_permanently_deleted": "The files are stored on QuickFile for 7 days, after which they are irretrievably deleted. after which they are permanently deleted.",
+	"can_i_upload_and_download_multiple_files_at_the_same_time": "Can I upload and download multiple files at the same time?",
+	"yes_you_can_to_save_multiple_files_at_once_in_the_file_sharing_service_quickfile_you_can_select_multiple_files_at_once_by_clicking_the_plus_sign_or_by_or_move_the_selected_files_with_the_mouse_to_the_appropriate_area": "Yes, you can. To save multiple files at once in the file sharing service QuickFile, you can select multiple files at once by clicking the plus sign or by or move the selected files with the mouse to the appropriate area.",
+	"how_can_i_access_downloaded_files_from_any_device": "How can I access downloaded files from any device?",
+	"to_access_the_files_from_any_device_you_need_to_click_on_the_link_to_the_archive_with_the_files_you_uploaded_to_quickfile_earlier_quickfile_previously": "To access the files from any device you need to click on the link to the archive with the files you uploaded to QuickFile earlier. QuickFile previously.",
+	"what_kind_of_support_is_provided_in_case_of_problems_or_questions_when_using_file_sharing": "What kind of support is provided in case of problems or questions when using file sharing?",
+	"if_you_have_any_questions_recommendations_problems_using_quickfile_you_can_contact_us_at_quickfilesite@gmailcom": "If you have any questions, recommendations, problems using QuickFile, you can contact us at quickfilesite@gmail.com."
 }

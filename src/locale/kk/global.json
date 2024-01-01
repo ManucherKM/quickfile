@@ -14,5 +14,18 @@
 	"or": "немесе",
 	"copy_link": "Сілтемені көшіру",
 	"the_file_could_not_be_found": "Файл табылмады",
-	"unexpected_server_error": "Күтпеген сервер қатесі"
+	"unexpected_server_error": "Күтпеген сервер қатесі",
+	"faq": "Жиі қойылатын сұрақтар",
+	"what_file_formats_are_supported_by_file_sharing": "Файлды бөлісуші қандай файл пішімдерін қолдайды?",
+	"you_can_store_files_in_any_format_quickFile_saves_your_data_in_its_original_form_without_any_conversion": "Сіз файлдарды кез-келген форматта сақтай аласыз. QuickFile сіздің деректеріңізді ешқандай түрлендірусіз бастапқы күйінде сақтайды.",
+	"is_there_a_limit_on_the_size_of_files_that_can_be_uploaded": "Жүктеуге болатын файлдардың өлшеміне шектеу бар ма?",
+	"the_file_sharing_service_has_a_limit_on_the_size_of_uploaded_files_which_is_up_to_500_MB_this_value_may_increase_with_how_often_and_how_many_people_use_quickfile": "Файлды бөлісу қызметінде жүктелетін файл өлшемінің шегі бар, ол 500 МБ дейін. Бұл мән QuickFile-ді қаншалықты жиі және қанша адам қолданатынына байланысты артуы мүмкін.",
+	"how_long_will_my_files_be_stored_on_the_file_sharing_server": "Менің файлдарым файлдарды ортақ пайдалану серверінде қанша уақыт сақталады?",
+	"the_files_are_stored_on_quickfile_for_7_days_after_which_they_are_irretrievably_deleted_after_which_they_are_permanently_deleted": "Файлдар QuickFile-де 7 күн сақталады, содан кейін олар біржола жойылады. содан кейін олар біржола жойылады.",
+	"can_i_upload_and_download_multiple_files_at_the_same_time": "Бір уақытта бірнеше файлды жүктей аламын ба?",
+	"yes_you_can_to_save_multiple_files_at_once_in_the_file_sharing_service_quickfile_you_can_select_multiple_files_at_once_by_clicking_the_plus_sign_or_by_or_move_the_selected_files_with_the_mouse_to_the_appropriate_area": "Иә, сен істей аласың. Quickfile файл алмасу қызметінде бірден бірнеше файлды сақтау үшін плюс немесе by белгішесін басу арқылы бірден бірнеше файлды таңдауға немесе таңдалған файлдарды тінтуірдің көмегімен тиісті аймаққа жылжытуға болады.",
+	"how_can_i_access_downloaded_files_from_any_device": "Кез келген құрылғыдан жүктелген файлдарға қалай қол жеткізуге болады?",
+	"to_access_the_files_from_any_device_you_need_to_click_on_the_link_to_the_archive_with_the_files_you_uploaded_to_quickfile_earlier_quickfile_previously": "Кез-келген құрылғыдан файлдарға қол жеткізу үшін Сіз QuickFile-ге бұрын жүктеген файлдармен Мұрағат сілтемесіне өтуіңіз керек. Жылдам файл бұрын.",
+	"what_kind_of_support_is_provided_in_case_of_problems_or_questions_when_using_file_sharing": "Файл алмастырғышты пайдалану кезінде проблемалар немесе сұрақтар туындаған жағдайда қандай қолдау көрсетіледі?",
+	"if_you_have_any_questions_recommendations_problems_using_quickfile_you_can_contact_us_at_quickfilesite@gmailcom": "Егер сізде QuickFile-ді пайдалану туралы сұрақтарыңыз, ұсыныстарыңыз, мәселелеріңіз болса, бізбен мына мекен-жай бойынша байланыса аласыз quickfilesite@gmail.com."
 }
