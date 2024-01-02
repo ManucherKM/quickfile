@@ -22,13 +22,16 @@ export async function generateMetadata({
 }: IGenerateMetadata) {
 	const t = await getTranslations({ locale })
 
-	const alternateLanguages = availableLocales.reduce(
-		(acc, locale) => ({
+	const alternateLanguages = availableLocales.reduce((acc, currLocale) => {
+		if (locale === currLocale) {
+			return acc
+		}
+
+		return {
 			...acc,
-			[locale]: CLIENT_URL + '/' + locale,
-		}),
-		{},
-	)
+			[currLocale]: CLIENT_URL + '/' + currLocale,
+		}
+	}, {})
 
 	return {
 		title: t('quickfile_is_a_fast_and_convenient_file_sharing_service'),
@@ -36,7 +39,7 @@ export async function generateMetadata({
 			'quickfile_is_an_online_service_for_fast_and_convenient_file_transfer_forget_about_complicated_registration_procedures_and_file_size_restrictions_with_quickfile_you_can_easily_and_instantly_send_files_to_any_recipient_right_from_your_browser_easily_share_documents_images_audio_and_video_files_quickfile_is_your_trusted_tool_for_fast_file_sharing_learn_how_to_transfer_files_without_restrictions_and_registration_on_quickfile_the_best_online_file_sharing_tool',
 		),
 		alternates: {
-			canonical: CLIENT_URL,
+			canonical: CLIENT_URL + '/' + locale,
 			languages: alternateLanguages,
 		},
 		icons: [
