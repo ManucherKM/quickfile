@@ -1,0 +1,11 @@
+.root {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	.wrapperContent {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+}

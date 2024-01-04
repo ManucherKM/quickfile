@@ -1,5 +1,6 @@
 export * from './AlertError'
 export * from './AlertMessage'
+export * from './BasicInfo/BasicInfo'
 export * from './FAQ/FAQ'
 export * from './List'
 export * from './LoaderProvider'
