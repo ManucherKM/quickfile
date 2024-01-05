@@ -9,6 +9,7 @@ export const useFileStore = create<IFileStore>(() => ({
 	async sendFiles(files) {
 		try {
 			const formData = new FormData()
+			console.log(files[0].size)
 
 			for (const file of files) {
 				formData.append('files', file)
@@ -17,6 +18,11 @@ export const useFileStore = create<IFileStore>(() => ({
 			const { data } = await axios.post<ISendFilesRes>(
 				EFileStoreApiRoutes.archiveManagement,
 				formData,
+				{
+					onUploadProgress: event => {
+						console.log(event.loaded, event.total)
+					},
+				},
 			)
 
 			return data.id

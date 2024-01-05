@@ -1,4 +1,5 @@
 export * from './addSmoothScrollToLinks'
 export * from './downloadFileFromBuffer'
+export * from './fileSizeValidator'
 export * from './getBrowserLanguage'
 export * from './writeTextIntoClipboard'

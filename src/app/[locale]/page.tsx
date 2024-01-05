@@ -3,6 +3,7 @@
 import { BasicInfo, FAQ, NavBar } from '@/components'
 import { useLoader, useWindowFilesTransfer } from '@/hooks'
 import { useFileStore, useNotificationsStore } from '@/storage'
+import { fileSizeValidator } from '@/utils'
 import clsx from 'clsx'
 import { FileAdd, Title, Tooltip } from 'kuui-react'
 import { useTranslations } from 'next-intl'
@@ -27,6 +28,11 @@ function Home({ params: { locale } }: IHome) {
 	async function sendHandler() {
 		try {
 			if (!selectFiles) return
+
+			if (!fileSizeValidator(selectFiles)) {
+				newError('Максимальный размер файлов - 500 МБ')
+				return
+			}
 
 			const id = await loader(sendFiles, selectFiles)
 
