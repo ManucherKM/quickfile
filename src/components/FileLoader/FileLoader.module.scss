@@ -1,0 +1,30 @@
+.root {
+	width: 100%;
+	max-width: 400px;
+
+	.wrapperTimer {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 20px;
+
+		.timer {
+			color: var(--kuui-dominant-2);
+			font-weight: 400;
+			font-size: 3rem;
+		}
+	}
+
+	.wrapperInfo {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 30px;
+
+		@media (max-width: 400px) {
+			flex-direction: column;
+			gap: 8px;
+		}
+	}
+}
