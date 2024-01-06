@@ -1,6 +1,6 @@
 'use client'
 
-import { BasicInfo, FAQ, FileLoader, NavBar } from '@/components'
+import { BasicInfo, FAQ, NavBar } from '@/components'
 import { useLoader, useWindowFilesTransfer } from '@/hooks'
 import { useFileStore, useNotificationsStore } from '@/storage'
 import { fileSizeValidator } from '@/utils'
@@ -63,7 +63,7 @@ function Home({ params: { locale } }: IHome) {
 	return (
 		<>
 			<NavBar />
-			<FileLoader />
+			{/* <FileLoader /> */}
 			<main className={styles}>
 				<div className={classes.app}>
 					{isDrag && (
