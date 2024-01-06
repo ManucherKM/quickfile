@@ -6,10 +6,9 @@ import { EFileStoreApiRoutes } from './types'
 
 /** With this hook you can access the file storage. */
 export const useFileStore = create<IFileStore>(() => ({
-	async sendFiles(files) {
+	async sendFiles(files, onUploadProgress, abortController) {
 		try {
 			const formData = new FormData()
-			console.log(files[0].size)
 
 			for (const file of files) {
 				formData.append('files', file)
@@ -19,9 +18,8 @@ export const useFileStore = create<IFileStore>(() => ({
 				EFileStoreApiRoutes.archiveManagement,
 				formData,
 				{
-					onUploadProgress: event => {
-						console.log(event.loaded, event.total)
-					},
+					onUploadProgress,
+					signal: abortController?.signal,
 				},
 			)
 

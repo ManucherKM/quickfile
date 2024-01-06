@@ -1,14 +1,14 @@
 'use client'
 
-import { BasicInfo, FAQ, NavBar } from '@/components'
-import { useLoader, useWindowFilesTransfer } from '@/hooks'
+import { BasicInfo, FAQ, FileLoader, NavBar } from '@/components'
+import { useFileLoadInfo, useWindowFilesTransfer } from '@/hooks'
 import { useFileStore, useNotificationsStore } from '@/storage'
-import { fileSizeValidator } from '@/utils'
+import { AxiosProgressEvent } from 'axios'
 import clsx from 'clsx'
 import { FileAdd, Title, Tooltip } from 'kuui-react'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import classes from './Home.module.scss'
 
 export interface IHome {
@@ -21,24 +21,55 @@ function Home({ params: { locale } }: IHome) {
 	const sendFiles = useFileStore(store => store.sendFiles)
 	const newError = useNotificationsStore(store => store.newError)
 	const newMessage = useNotificationsStore(store => store.newMessage)
-	const loader = useLoader()
 	const router = useRouter()
 	const t = useTranslations()
+
+	const isAbort = useRef<boolean>(false)
+
+	const [isShowFileLoader, setIsShowFileLoader] = useState<boolean>(false)
+	const [progress, setProgress] = useState<number | null>(null)
+	const [estimat, setEstimat] = useState<number | null>(null)
+	const [totalSize, setTotalSize] = useState<number | null>(null)
+
+	const controller = useRef<AbortController>(new AbortController())
+
+	const { time, count, size, percent } = useFileLoadInfo(
+		selectFiles,
+		progress,
+		totalSize,
+		estimat,
+	)
+
+	function onUploadProgress(event: AxiosProgressEvent) {
+		if (!event.total || !event.progress || !event.estimated) return
+
+		setTotalSize(event.total)
+		setProgress(event.progress)
+		setEstimat(event.estimated)
+	}
 
 	async function sendHandler() {
 		try {
 			if (!selectFiles) return
 
-			if (!fileSizeValidator(selectFiles)) {
-				newError('Максимальный размер файлов - 500 МБ')
-				return
-			}
+			// if (!fileSizeValidator(selectFiles)) {
+			// 	newError('Максимальный размер файлов - 500 МБ')
+			// 	return
+			// }
 
-			const id = await loader(sendFiles, selectFiles)
+			setIsShowFileLoader(true)
+
+			const id = await sendFiles(
+				selectFiles,
+				onUploadProgress,
+				controller.current,
+			)
 
 			setSelectFiles(null)
 
 			if (!id) {
+				if (isAbort.current) return
+
 				newError(t('failed_to_save_file(s)'))
 				return
 			}
@@ -48,7 +79,15 @@ function Home({ params: { locale } }: IHome) {
 			router.push(`/${locale}/share/${id}`)
 		} catch (e) {
 			console.log(e)
+		} finally {
+			setIsShowFileLoader(false)
+			isAbort.current = false
+			controller.current = new AbortController()
 		}
+	}
+
+	function cancelHandler() {
+		isAbort.current = true
 	}
 
 	useEffect(() => {
@@ -59,11 +98,25 @@ function Home({ params: { locale } }: IHome) {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [selectFiles])
 
+	useEffect(() => {
+		if (!isAbort.current) return
+
+		controller.current.abort()
+	}, [isAbort.current])
+
 	const styles = clsx(['container', classes.root])
 	return (
 		<>
 			<NavBar />
-			{/* <FileLoader /> */}
+			{isShowFileLoader && (
+				<FileLoader
+					onCancel={cancelHandler}
+					time={time}
+					count={count}
+					size={size}
+					percent={percent}
+				/>
+			)}
 			<main className={styles}>
 				<div className={classes.app}>
 					{isDrag && (
