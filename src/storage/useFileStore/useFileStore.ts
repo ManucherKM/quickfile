@@ -1,5 +1,6 @@
 import axios from '@/config/axios'
 import { downloadFileFromBuffer } from '@/utils'
+import { AxiosProgressEvent } from 'axios'
 import { create } from 'zustand'
 import type { IFileData, IFileStore, ISendFilesRes } from './types'
 import { EFileStoreApiRoutes } from './types'
@@ -27,6 +28,37 @@ export const useFileStore = create<IFileStore>(() => ({
 
 			const { id, urls } = resApi.data
 
+			const totalEstimate: number[] = []
+			const totalProgress: number[] = []
+			const totalSize: number[] = []
+
+			function WrapperOnUploadProgress(
+				event: AxiosProgressEvent,
+				count: number,
+			) {
+				console.log(count)
+
+				if (event.estimated) {
+					totalEstimate[count] = event.estimated
+				}
+
+				if (event.progress) {
+					totalProgress[count] = event.progress
+				}
+
+				if (event.total) {
+					totalSize[count] = event.total
+				}
+
+				if (!onUploadProgress) return
+
+				onUploadProgress({
+					estimated: totalEstimate.reduce((acc, est) => acc + est, 0),
+					progress: Math.max(...totalProgress),
+					total: totalSize.reduce((acc, s) => acc + s, 0),
+				})
+			}
+
 			const promises = []
 
 			for (let i = 0; i < urls.length; i++) {
@@ -34,7 +66,7 @@ export const useFileStore = create<IFileStore>(() => ({
 
 				promises.push(
 					axios.put(url, files[i], {
-						onUploadProgress,
+						onUploadProgress: event => WrapperOnUploadProgress(event, i),
 						signal: abortController?.signal,
 					}),
 				)

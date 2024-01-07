@@ -3,7 +3,7 @@
 import { BasicInfo, FAQ, FileLoader, NavBar } from '@/components'
 import { useFileLoadInfo, useWindowFilesTransfer } from '@/hooks'
 import { useFileStore, useNotificationsStore } from '@/storage'
-import { AxiosProgressEvent } from 'axios'
+import { IProgressEvent } from '@/storage/useFileStore/types'
 import clsx from 'clsx'
 import { FileAdd, Title, Tooltip } from 'kuui-react'
 import { useTranslations } from 'next-intl'
@@ -40,12 +40,14 @@ function Home({ params: { locale } }: IHome) {
 		estimat,
 	)
 
-	function onUploadProgress(event: AxiosProgressEvent) {
-		if (!event.total || !event.progress || !event.estimated) return
-
+	function onUploadProgress(event: IProgressEvent) {
 		setTotalSize(event.total)
 		setProgress(event.progress)
 		setEstimat(event.estimated)
+
+		// console.log(event.total)
+		// console.log(event.progress)
+		// console.log(event.estimated)
 	}
 
 	async function sendHandler() {

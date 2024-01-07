@@ -1,5 +1,3 @@
-import { AxiosRequestConfig } from 'axios'
-
 export interface IFileData {
 	originalName: string
 	mimetype: string
@@ -11,10 +9,16 @@ export interface ISendFilesRes {
 	urls: string[]
 }
 
+export interface IProgressEvent {
+	estimated: number
+	progress: number
+	total: number
+}
+
 export interface IFileStore {
 	sendFiles: (
 		files: FileList,
-		onUploadProgress?: AxiosRequestConfig<unknown>['onUploadProgress'],
+		onUploadProgress?: (event: IProgressEvent) => void,
 		abortController?: AbortController,
 	) => Promise<string | false>
 	downloadArchive: (id: string) => Promise<boolean>
