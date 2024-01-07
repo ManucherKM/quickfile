@@ -1,7 +1,14 @@
 import { AxiosRequestConfig } from 'axios'
 
+export interface IFileData {
+	originalName: string
+	mimetype: string
+	size: number
+}
+
 export interface ISendFilesRes {
 	id: string
+	urls: string[]
 }
 
 export interface IFileStore {
