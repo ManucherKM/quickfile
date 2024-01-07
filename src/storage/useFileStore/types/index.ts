@@ -15,10 +15,12 @@ export interface IProgressEvent {
 	total: number
 }
 
+export type onUploadProgress = (event: IProgressEvent) => void
+
 export interface IFileStore {
 	sendFiles: (
 		files: FileList,
-		onUploadProgress?: (event: IProgressEvent) => void,
+		onUploadProgress?: onUploadProgress,
 		abortController?: AbortController,
 	) => Promise<string | false>
 	downloadArchive: (id: string) => Promise<boolean>

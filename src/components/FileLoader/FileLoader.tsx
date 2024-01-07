@@ -8,9 +8,9 @@ import { Info } from './Info/Info'
 export interface IFileLoader {
 	time?: string
 	size?: string
-	count?: number
+	count?: number | string
 	percent?: string
-	onCancel: () => void
+	onCancel?: () => void
 }
 
 export const FileLoader: FC<IFileLoader> = ({
@@ -21,7 +21,9 @@ export const FileLoader: FC<IFileLoader> = ({
 	onCancel,
 }) => {
 	function cancelHandler() {
-		onCancel()
+		if (onCancel) {
+			onCancel()
+		}
 	}
 
 	return (
