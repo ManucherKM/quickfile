@@ -11,7 +11,7 @@ export interface IInfo {
 export const Info: FC<IInfo> = ({ description, info }) => {
 	return (
 		<div className={classes.root}>
-			<Title>{!!info ? info : 'Загрузка'}</Title>
+			<Title>{info}</Title>
 			<Description>{description}</Description>
 		</div>
 	)

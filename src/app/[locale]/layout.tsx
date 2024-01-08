@@ -1,5 +1,5 @@
 import '@/assets/styles/index.scss'
-import { LoaderProvider, NavBar, NotificationsProvider } from '@/components'
+import { LoaderProvider, NotificationsProvider } from '@/components'
 import { env } from '@/config/env'
 import { availableLocales } from '@/locale'
 import { Metadata } from 'next'
@@ -83,10 +83,7 @@ ym(95870160, "init", {
 			<body>
 				<NextIntlClientProvider locale={locale} messages={messages}>
 					<LoaderProvider>
-						<NotificationsProvider>
-							<NavBar />
-							{children}
-						</NotificationsProvider>
+						<NotificationsProvider>{children}</NotificationsProvider>
 					</LoaderProvider>
 				</NextIntlClientProvider>
 			</body>

@@ -1,12 +1,12 @@
-import type { IFileLoaderStore } from './types'
+import type { IArchiveLoaderStore } from './types'
 
 import { create } from 'zustand'
 
 const defaultStore = {
-	isShowFileLoader: false,
-} as IFileLoaderStore
+	isShowArchiveLoader: false,
+} as IArchiveLoaderStore
 
-export const useFileLoaderStore = create<IFileLoaderStore>(set => ({
+export const useArchiveLoaderStore = create<IArchiveLoaderStore>(set => ({
 	...defaultStore,
 	setInfo(info) {
 		let key: keyof typeof info
@@ -24,7 +24,10 @@ export const useFileLoaderStore = create<IFileLoaderStore>(set => ({
 	setOnCancel(func) {
 		set(prev => ({ ...prev, onCancel: func }))
 	},
-	setIsShowFileLoader(target) {
-		set(prev => ({ ...prev, isShowFileLoader: target }))
+	setIsShowArchiveLoader(target) {
+		set(prev => ({ ...prev, isShowArchiveLoader: target }))
+	},
+	reset() {
+		set(defaultStore)
 	},
 }))

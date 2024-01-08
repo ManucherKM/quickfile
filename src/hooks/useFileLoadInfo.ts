@@ -6,7 +6,7 @@ import {
 } from '@/utils'
 import { useEffect, useState } from 'react'
 
-export interface IInfo {
+export interface IUploadInfo {
 	time?: string
 	size?: string
 	count?: number
@@ -14,7 +14,7 @@ export interface IInfo {
 	onUploadProgress: (event: IProgressEvent) => void
 }
 
-export function useFileLoadInfo(files: FileList | null): IInfo {
+export function useFileLoadInfo(files: FileList | null): IUploadInfo {
 	const [percent, setProgress] = useState<number | null>(null)
 	const [time, setTime] = useState<number | null>(null)
 	const [size, setSize] = useState<number | null>(null)

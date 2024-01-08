@@ -5,15 +5,16 @@ export interface IInfo {
 	percent?: string
 }
 
-export interface IFileLoaderStore {
+export interface IArchiveLoaderStore {
 	time?: string
 	count?: string
 	size?: string
 	percent?: string
-	isShowFileLoader: boolean
+	isShowArchiveLoader: boolean
 
 	onCancel?: () => void
-	setOnCancel: (func: IFileLoaderStore['onCancel']) => void
+	setOnCancel: (func: IArchiveLoaderStore['onCancel']) => void
 	setInfo: (info: IInfo) => void
-	setIsShowFileLoader: (target: boolean) => void
+	setIsShowArchiveLoader: (target: boolean) => void
+	reset: () => void
 }

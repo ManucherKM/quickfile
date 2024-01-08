@@ -1,4 +1,4 @@
-import { Button, Popup, Title } from 'kuui-react'
+import { Button, Paragraph, Popup, Title } from 'kuui-react'
 import { FC } from 'react'
 import { Browser } from '../Browser'
 import { Description } from './Description/Description'
@@ -26,26 +26,31 @@ export const FileLoader: FC<IFileLoader> = ({
 		}
 	}
 
+	const isLoading = !time || !count || !percent || !size
+
 	return (
 		<Browser>
 			<Popup className={classes.root}>
-				<div className={classes.wrapperTimer}>
-					<Title className={classes.timer} dimension="large">
-						{!!time ? time : 'Загрузка'}
-					</Title>
-					<Description>до окончания загрузки</Description>
-				</div>
-				<div className={classes.wrapperInfo}>
-					<Info
-						info={!!size ? size + ' МБ' : undefined}
-						description="общий размер"
-					/>
-					<Info info={count} description="файлы" />
-					<Info info={percent} description="прогресс" />
-				</div>
-				<Button variant="active" onClick={cancelHandler}>
-					Отменить
-				</Button>
+				{isLoading ? (
+					<Paragraph align="center">Ожидание ответа сервера...</Paragraph>
+				) : (
+					<>
+						<div className={classes.wrapperTimer}>
+							<Title className={classes.timer} dimension="large">
+								{time}
+							</Title>
+							<Description>до окончания загрузки</Description>
+						</div>
+						<div className={classes.wrapperInfo}>
+							<Info info={size + ' МБ'} description="общий размер" />
+							<Info info={count} description="файлы" />
+							<Info info={percent} description="прогресс" />
+						</div>
+						<Button variant="active" onClick={cancelHandler}>
+							Отменить
+						</Button>
+					</>
+				)}
 			</Popup>
 		</Browser>
 	)

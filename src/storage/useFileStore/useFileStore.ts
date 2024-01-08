@@ -1,7 +1,13 @@
 import axios from '@/config/axios'
 import { combineUploadProgress, downloadFileFromBuffer } from '@/utils'
 import { create } from 'zustand'
-import type { IFileData, IFileStore, ISendFilesRes } from './types'
+import { useArchiveLoaderStore } from '..'
+import type {
+	IExistArchiveResponse,
+	IFileData,
+	IFileStore,
+	ISendFilesRes,
+} from './types'
 import { EFileStoreApiRoutes } from './types'
 
 /** With this hook you can access the file storage. */
@@ -36,7 +42,9 @@ export const useFileStore = create<IFileStore>(() => ({
 
 				promises.push(
 					axios.put(url, files[i], {
-						onUploadProgress: event => combinedOnUploadProgress(event, i),
+						onUploadProgress: onUploadProgress
+							? event => combinedOnUploadProgress(event, i)
+							: undefined,
 						signal: abortController?.signal,
 					}),
 				)
@@ -51,14 +59,18 @@ export const useFileStore = create<IFileStore>(() => ({
 
 			// Return false.
 			return false
+		} finally {
+			useArchiveLoaderStore.getState().reset()
 		}
 	},
-	async downloadArchive(id) {
+	async downloadArchive(id, onDownloadProgress, abortController) {
 		try {
 			const url = EFileStoreApiRoutes.archiveManagement + '/' + id
 
 			const { data } = await axios.get<Buffer>(url, {
 				responseType: 'arraybuffer',
+				onDownloadProgress,
+				signal: abortController?.signal,
 			})
 
 			downloadFileFromBuffer(data)
@@ -68,19 +80,23 @@ export const useFileStore = create<IFileStore>(() => ({
 			console.log(e)
 
 			return false
+		} finally {
+			useArchiveLoaderStore.getState().reset()
 		}
 	},
 	async checkExistArchive(id) {
 		try {
 			const url = EFileStoreApiRoutes.checkExistArchive + '/' + id
 
-			const { data } = await axios.get<{ exist: boolean }>(url)
+			const { data } = await axios.get<IExistArchiveResponse>(url)
 
-			return data.exist
+			return data
 		} catch (e) {
 			console.log(e)
 
-			return false
+			return {
+				exist: false,
+			}
 		}
 	},
 }))

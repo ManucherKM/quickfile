@@ -1,9 +1,14 @@
 'use client'
 
-import { BasicInfo, FAQ, FileLoaderProvider } from '@/components'
-import { DragAndDropProvider } from '@/components/DragAndDropProvider'
+import {
+	BasicInfo,
+	DragAndDropProvider,
+	FAQ,
+	FileLoaderProvider,
+	NavBar,
+} from '@/components'
 import { useFileLoadInfo, useSendFiles } from '@/hooks'
-import { useDragAndDropStore, useFileLoaderStore } from '@/storage'
+import { useArchiveLoaderStore, useDragAndDropStore } from '@/storage'
 import clsx from 'clsx'
 import { FileAdd, Title, Tooltip } from 'kuui-react'
 import { useTranslations } from 'next-intl'
@@ -18,16 +23,15 @@ function Home({ params: { locale } }: IHome) {
 	const t = useTranslations()
 	const [selectFiles, setSelectFiles] = useState<FileList | null>(null)
 	const changeFiles = useDragAndDropStore(store => store.setChangeFilesHandler)
-	const setInfo = useFileLoaderStore(store => store.setInfo)
+	const setInfo = useArchiveLoaderStore(store => store.setInfo)
 	const { time, count, size, percent, onUploadProgress } =
 		useFileLoadInfo(selectFiles)
 
-	const sendHandler = useSendFiles(
-		selectFiles,
-		setSelectFiles,
-		onUploadProgress,
-		locale,
-	)
+	const sendHandler = useSendFiles(selectFiles, locale, onUploadProgress)
+
+	useEffect(() => {
+		changeFiles(setSelectFiles)
+	}, [])
 
 	useEffect(() => {
 		if (!selectFiles) return
@@ -36,10 +40,6 @@ function Home({ params: { locale } }: IHome) {
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [selectFiles])
-
-	useEffect(() => {
-		changeFiles(setSelectFiles)
-	}, [])
 
 	useEffect(() => {
 		setInfo({
@@ -54,6 +54,7 @@ function Home({ params: { locale } }: IHome) {
 	return (
 		<FileLoaderProvider>
 			<DragAndDropProvider>
+				<NavBar />
 				<main className={styles}>
 					<div className={classes.app}>
 						<div className={classes.wrapper__content}>

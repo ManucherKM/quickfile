@@ -1,10 +1,14 @@
 'use client'
 
-import { useLoader } from '@/hooks'
-import { useFileStore, useNotificationsStore, useStore } from '@/storage'
+import { FileLoaderProvider } from '@/components'
+import {
+	useArchiveDownloadInfo,
+	useCheckExistArchive,
+	useDownloadFiles,
+} from '@/hooks'
+import { useArchiveLoaderStore } from '@/storage'
 import { Button, Paragraph } from 'kuui-react'
 import { useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
 import { useEffect, type FC } from 'react'
 import classes from './Download.module.scss'
 
@@ -13,70 +17,39 @@ export interface IDownload {
 }
 
 const Download: FC<IDownload> = ({ params: { id, locale } }) => {
-	// Function to create a new error to show it to the user.
-	const newError = useNotificationsStore(store => store.newError)
-
-	// Function for downloading an archive from the API.
-	const downloadArchive = useFileStore(store => store.downloadArchive)
-
-	const setLoading = useStore(store => store.setLoading)
-
-	const checkExistArchive = useFileStore(store => store.checkExistArchive)
-
 	const t = useTranslations()
 
-	const router = useRouter()
+	const { time, percent, size, onDownloadProgress } = useArchiveDownloadInfo()
 
-	// A function for showing Loader to the user when requesting an API.
-	const loader = useLoader()
+	const downloadHandler = useDownloadFiles(id, onDownloadProgress)
+	const checkArchive = useCheckExistArchive(id, locale)
 
-	// Handler function that will be processed when clicking on the "download" button.
-	async function clickHandler() {
-		// If the identifier is not found, stop executing the function.
-		if (!id) return false
-
-		// We get the result of the request.
-		const isSuccess = await loader(downloadArchive, id)
-
-		// If the archive could not be downloaded.
-		if (!isSuccess) {
-			// Show the user an error message.
-			newError(t('failed_to_download_archive'))
-		}
-	}
+	const setInfo = useArchiveLoaderStore(store => store.setInfo)
 
 	useEffect(() => {
-		const fetchFile = async () => {
-			try {
-				setLoading(true)
-				const isSuccess = await checkExistArchive(id)
-
-				if (!isSuccess) {
-					newError(t('the_file_could_not_be_found'))
-					router.push('/' + locale)
-				}
-			} catch (e) {
-				newError(t('unexpected_server_error'))
-				console.log(e)
-			} finally {
-				setLoading(false)
-			}
-		}
-
-		fetchFile()
-
+		checkArchive()
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
-	return (
-		<main className={classes.root}>
-			<div className={classes.wrapper__content}>
-				<Paragraph align="center">
-					{t('to_download_the_archive_with_files')}
-				</Paragraph>
 
-				<Button onClick={clickHandler}>{t('download')}</Button>
-			</div>
-		</main>
+	useEffect(() => {
+		setInfo({
+			time,
+			percent,
+			size,
+		})
+	}, [time, percent, size])
+	return (
+		<FileLoaderProvider>
+			<main className={classes.root}>
+				<div className={classes.wrapper__content}>
+					<Paragraph align="center">
+						{t('to_download_the_archive_with_files')}
+					</Paragraph>
+
+					<Button onClick={downloadHandler}>{t('download')}</Button>
+				</div>
+			</main>
+		</FileLoaderProvider>
 	)
 }
 
