@@ -1,13 +1,13 @@
 'use client'
 
 import { BasicInfo, FAQ } from '@/components'
-import { useFileLoadInfo, useWindowFilesTransfer } from '@/hooks'
+import { useFileLoadInfo } from '@/hooks'
 import {
+	useDragAndDropStore,
 	useFileLoaderStore,
 	useFileStore,
 	useNotificationsStore,
 } from '@/storage'
-import { IProgressEvent } from '@/storage/useFileStore/types'
 import clsx from 'clsx'
 import { FileAdd, Title, Tooltip } from 'kuui-react'
 import { useTranslations } from 'next-intl'
@@ -20,40 +20,23 @@ export interface IHome {
 }
 
 function Home({ params: { locale } }: IHome) {
-	const [isDrag, setIsDrag] = useWindowFilesTransfer(false)
-	const [selectFiles, setSelectFiles] = useState<FileList | null>(null)
-	const sendFiles = useFileStore(store => store.sendFiles)
-	const newError = useNotificationsStore(store => store.newError)
-	const newMessage = useNotificationsStore(store => store.newMessage)
-	const setIsShowFileLoader = useFileLoaderStore(
-		store => store.setIsShowFileLoader,
-	)
-
-	const setOnCancel = useFileLoaderStore(store => store.setOnCancel)
-	const setInfo = useFileLoaderStore(store => store.setInfo)
 	const router = useRouter()
 	const t = useTranslations()
 
 	const isAbort = useRef<boolean>(false)
-
-	const [progress, setProgress] = useState<number | null>(null)
-	const [estimat, setEstimat] = useState<number | null>(null)
-	const [totalSize, setTotalSize] = useState<number | null>(null)
-
 	const controller = useRef<AbortController>(new AbortController())
+	const [selectFiles, setSelectFiles] = useState<FileList | null>(null)
 
-	const { time, count, size, percent } = useFileLoadInfo(
-		selectFiles,
-		progress,
-		totalSize,
-		estimat,
-	)
+	const changeFiles = useDragAndDropStore(store => store.setChangeFilesHandler)
+	const sendFiles = useFileStore(store => store.sendFiles)
+	const newError = useNotificationsStore(store => store.newError)
+	const newMessage = useNotificationsStore(store => store.newMessage)
+	const setFileLoader = useFileLoaderStore(store => store.setIsShowFileLoader)
+	const setOnCancel = useFileLoaderStore(store => store.setOnCancel)
+	const setInfo = useFileLoaderStore(store => store.setInfo)
 
-	function onUploadProgress(event: IProgressEvent) {
-		setTotalSize(event.total)
-		setProgress(event.progress)
-		setEstimat(event.estimated)
-	}
+	const { time, count, size, percent, onUploadProgress } =
+		useFileLoadInfo(selectFiles)
 
 	async function sendHandler() {
 		try {
@@ -64,7 +47,7 @@ function Home({ params: { locale } }: IHome) {
 			// 	return
 			// }
 
-			setIsShowFileLoader(true)
+			setFileLoader(true)
 
 			const id = await sendFiles(
 				selectFiles,
@@ -87,7 +70,7 @@ function Home({ params: { locale } }: IHome) {
 		} catch (e) {
 			console.log(e)
 		} finally {
-			setIsShowFileLoader(false)
+			setFileLoader(false)
 			isAbort.current = false
 			controller.current = new AbortController()
 		}
@@ -111,6 +94,7 @@ function Home({ params: { locale } }: IHome) {
 		setOnCancel(() => {
 			isAbort.current = true
 		})
+		changeFiles(setSelectFiles)
 	}, [])
 
 	useEffect(() => {
@@ -126,13 +110,6 @@ function Home({ params: { locale } }: IHome) {
 	return (
 		<main className={styles}>
 			<div className={classes.app}>
-				{isDrag && (
-					<FileAdd
-						variant="dragAndDrop"
-						onClose={() => setIsDrag(false)}
-						onChangeFiles={setSelectFiles}
-					/>
-				)}
 				<div className={classes.wrapper__content}>
 					<div className={classes.info}>
 						<Title className={classes.title}>{t('select_files')}</Title>
@@ -163,6 +140,7 @@ function Home({ params: { locale } }: IHome) {
 					<FileAdd
 						className={classes.fileAdd}
 						variant="area"
+						// Fix it
 						wrapperAreaLabel="asd"
 						onChange={e => {
 							setSelectFiles(e.target.files)

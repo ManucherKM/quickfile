@@ -1,3 +1,8 @@
+'use client'
+
+import { useWindowFilesTransfer } from '@/hooks'
+import { useDragAndDropStore } from '@/storage'
+import { FileAdd } from 'kuui-react'
 import { FC, ReactNode } from 'react'
 
 export interface IDragAndDropProvider {
@@ -5,5 +10,21 @@ export interface IDragAndDropProvider {
 }
 
 export const DragAndDropProvider: FC<IDragAndDropProvider> = ({ children }) => {
-	return <div>DragAndDropProvider</div>
+	const [isDrag, setIsDrag] = useWindowFilesTransfer(false)
+	const changeFilesHandler = useDragAndDropStore(
+		store => store.changeFilesHandler,
+	)
+
+	return (
+		<>
+			{isDrag && (
+				<FileAdd
+					variant="dragAndDrop"
+					onClose={() => setIsDrag(false)}
+					onChangeFiles={changeFilesHandler}
+				/>
+			)}
+			{children}
+		</>
+	)
 }

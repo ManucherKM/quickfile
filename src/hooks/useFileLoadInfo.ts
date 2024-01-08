@@ -1,48 +1,35 @@
+import { IProgressEvent } from '@/storage/useFileStore/types'
 import {
 	getFormatedFileSize,
 	getFormatedProgress,
 	getFormatedTimer,
 } from '@/utils'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 export interface IInfo {
 	time?: string
 	size?: string
 	count?: number
 	percent?: string
+	onUploadProgress: (event: IProgressEvent) => void
 }
 
-export function useFileLoadInfo(
-	files: FileList | null,
-	progress: number | null,
-	size: number | null,
-	time: number | null,
-): IInfo {
-	const [info, setInfo] = useState<IInfo>({})
+export function useFileLoadInfo(files: FileList | null): IInfo {
+	const [percent, setProgress] = useState<number | null>(null)
+	const [time, setTime] = useState<number | null>(null)
+	const [size, setSize] = useState<number | null>(null)
 
-	useEffect(() => {
-		if (!files) return
+	function onUploadProgress(event: IProgressEvent) {
+		setSize(event.total)
+		setProgress(event.progress)
+		setTime(event.estimated)
+	}
 
-		setInfo(prev => ({ ...prev, count: files.length }))
-	}, [files])
-
-	useEffect(() => {
-		if (!progress) return
-
-		setInfo(prev => ({ ...prev, percent: getFormatedProgress(progress) }))
-	}, [progress])
-
-	useEffect(() => {
-		if (!size) return
-
-		setInfo(prev => ({ ...prev, size: getFormatedFileSize(size) }))
-	}, [size])
-
-	useEffect(() => {
-		if (!time) return
-
-		setInfo(prev => ({ ...prev, time: getFormatedTimer(time) }))
-	}, [time])
-
-	return info
+	return {
+		count: files?.length,
+		percent: percent ? getFormatedProgress(percent) : undefined,
+		size: size ? getFormatedFileSize(size) : undefined,
+		time: time ? getFormatedTimer(time) : undefined,
+		onUploadProgress,
+	}
 }

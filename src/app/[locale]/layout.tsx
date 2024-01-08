@@ -5,6 +5,7 @@ import {
 	NavBar,
 	NotificationsProvider,
 } from '@/components'
+import { DragAndDropProvider } from '@/components/DragAndDropProvider'
 import { env } from '@/config/env'
 import { availableLocales } from '@/locale'
 import { Metadata } from 'next'
@@ -89,8 +90,12 @@ ym(95870160, "init", {
 				<NextIntlClientProvider locale={locale} messages={messages}>
 					<LoaderProvider>
 						<NotificationsProvider>
-							<NavBar />
-							<FileLoaderProvider>{children}</FileLoaderProvider>
+							<FileLoaderProvider>
+								<DragAndDropProvider>
+									<NavBar />
+									{children}
+								</DragAndDropProvider>
+							</FileLoaderProvider>
 						</NotificationsProvider>
 					</LoaderProvider>
 				</NextIntlClientProvider>
