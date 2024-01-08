@@ -12,8 +12,10 @@ import { EFileStoreApiRoutes } from './types'
 
 /** With this hook you can access the file storage. */
 export const useFileStore = create<IFileStore>(() => ({
-	async sendFiles(files, onUploadProgress, abortController) {
+	async sendFiles(selectedFiles, onUploadProgress, abortController) {
 		try {
+			const files = Array.from(selectedFiles)
+
 			const dataFiles: IFileData[] = []
 
 			for (const file of files) {
@@ -37,7 +39,7 @@ export const useFileStore = create<IFileStore>(() => ({
 
 			const promises = []
 
-			for (let i = 0; i < urls.length; i++) {
+			for (let i = 0; i < files.length; i++) {
 				const url = urls[i]
 
 				promises.push(

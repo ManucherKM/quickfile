@@ -15,9 +15,9 @@ export function useDownloadFiles(
 	const setOnCancel = useArchiveLoaderStore(store => store.setOnCancel)
 	const newError = useNotificationsStore(store => store.newError)
 	const downloadArchive = useFileStore(store => store.downloadArchive)
-	const [isAbort, abortController] = useAbort()
+	const [isAbort, abortController, resetAbort] = useAbort()
 	const t = useTranslations()
-	const loader = useArchiveLoader(isAbort, abortController)
+	const loader = useArchiveLoader()
 
 	useEffect(() => {
 		setOnCancel(() => {
@@ -35,20 +35,26 @@ export function useDownloadFiles(
 	}, [isAbort.current])
 
 	return async function () {
-		// If the identifier is not found, stop executing the function.
-		if (!id) return false
+		try {
+			// If the identifier is not found, stop executing the function.
+			if (!id) return false
 
-		// We get the result of the request.
-		const isSuccess = await loader(
-			downloadArchive,
-			id,
-			onDownloadProgress,
-			abortController.current,
-		)
+			// We get the result of the request.
+			const isSuccess = await loader(
+				downloadArchive,
+				id,
+				onDownloadProgress,
+				abortController.current,
+			)
 
-		if (!isSuccess && !isAbort.current) {
-			// Show the user an error message.
-			newError(t('failed_to_download_archive'))
+			if (!isSuccess && !isAbort.current) {
+				// Show the user an error message.
+				newError(t('failed_to_download_archive'))
+			}
+		} catch (e) {
+			console.log(e)
+		} finally {
+			resetAbort()
 		}
 	}
 }

@@ -21,9 +21,9 @@ export function useSendFiles(
 	const newMessage = useNotificationsStore(store => store.newMessage)
 	const sendFiles = useFileStore(store => store.sendFiles)
 	const setOnCancel = useArchiveLoaderStore(store => store.setOnCancel)
-	const [isAbort, abortController] = useAbort()
+	const [isAbort, abortController, resetAbort] = useAbort()
 
-	const loader = useArchiveLoader(isAbort, abortController)
+	const loader = useArchiveLoader()
 
 	useEffect(() => {
 		setOnCancel(() => {
@@ -41,29 +41,35 @@ export function useSendFiles(
 	}, [isAbort.current])
 
 	return async function () {
-		if (!selectFiles) return
+		try {
+			if (!selectFiles) return
 
-		if (!fileSizeValidator(selectFiles)) {
-			newError('Максимальный размер файлов - 500 МБ')
-			return
+			if (!fileSizeValidator(selectFiles)) {
+				newError('Максимальный размер файлов - 500 МБ')
+				return
+			}
+
+			const id = await loader(
+				sendFiles,
+				selectFiles,
+				onUploadProgress,
+				abortController.current,
+			)
+
+			if (!id) {
+				if (isAbort.current) return
+
+				newError(t('failed_to_save_file(s)'))
+				return
+			}
+
+			newMessage(t('the_files_have_been_saved'))
+
+			router.push(`/${locale}/share/${id}`)
+		} catch (e) {
+			console.log(e)
+		} finally {
+			resetAbort()
 		}
-
-		const id = await loader(
-			sendFiles,
-			selectFiles,
-			onUploadProgress,
-			abortController.current,
-		)
-
-		if (!id) {
-			if (isAbort.current) return
-
-			newError(t('failed_to_save_file(s)'))
-			return
-		}
-
-		newMessage(t('the_files_have_been_saved'))
-
-		router.push(`/${locale}/share/${id}`)
 	}
 }

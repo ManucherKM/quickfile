@@ -1,9 +1,12 @@
-import { Button, Paragraph, Popup, Title } from 'kuui-react'
-import { FC } from 'react'
+'use client'
+
+import { Button, Popup, Title } from 'kuui-react'
+import { FC, useEffect, useState } from 'react'
 import { Browser } from '../Browser'
 import { Description } from './Description/Description'
 import classes from './FileLoader.module.scss'
 import { Info } from './Info/Info'
+import { Stage } from './Stage/Stage'
 
 export interface IFileLoader {
 	time?: string
@@ -20,6 +23,8 @@ export const FileLoader: FC<IFileLoader> = ({
 	size,
 	onCancel,
 }) => {
+	const [stage, setStage] = useState<string>('Ожидание ответа сервера')
+
 	function cancelHandler() {
 		if (onCancel) {
 			onCancel()
@@ -28,11 +33,17 @@ export const FileLoader: FC<IFileLoader> = ({
 
 	const isLoading = !time || !count || !percent || !size
 
+	useEffect(() => {
+		setTimeout(() => {
+			setStage('Загрузка архива')
+		}, 2000)
+	}, [])
+
 	return (
 		<Browser>
 			<Popup className={classes.root}>
 				{isLoading ? (
-					<Paragraph align="center">Ожидание ответа сервера...</Paragraph>
+					<Stage>{stage}</Stage>
 				) : (
 					<>
 						<div className={classes.wrapperTimer}>

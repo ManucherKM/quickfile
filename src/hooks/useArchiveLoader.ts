@@ -2,12 +2,9 @@
 
 // Utils
 import { useArchiveLoaderStore } from '@/storage'
-import { MutableRefObject, useCallback } from 'react'
+import { useCallback } from 'react'
 
-export function useArchiveLoader(
-	abort?: MutableRefObject<boolean>,
-	abortController?: MutableRefObject<AbortController>,
-) {
+export function useArchiveLoader() {
 	// Function for changing Loader's state.
 	const setArchiveLoader = useArchiveLoaderStore(
 		store => store.setIsShowArchiveLoader,
@@ -31,14 +28,6 @@ export function useArchiveLoader(
 			} finally {
 				// Remove Loader.
 				setArchiveLoader(false)
-
-				if (abort) {
-					abort.current = false
-				}
-
-				if (abortController) {
-					abortController.current = new AbortController()
-				}
 			}
 		},
 		[setArchiveLoader],
