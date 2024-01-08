@@ -1,7 +1,7 @@
 .root {
 	width: 100%;
 	max-width: 400px;
-	padding: 20px;
+	padding: 16px;
 
 	.wrapperTimer {
 		display: flex;
@@ -26,6 +26,8 @@
 		@media (max-width: 400px) {
 			flex-direction: column;
 			gap: 8px;
+			align-items: start;
+			text-align: left;
 		}
 	}
 }

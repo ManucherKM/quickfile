@@ -12,7 +12,7 @@ export function combineUploadProgress(onUploadProgress?: onUploadProgress) {
 		num: number,
 	) {
 		if (event.estimated) estimate[num] = event.estimated
-		if (event.progress) progress[num] = event.progress
+		if (event.progress) progress[num] = event.loaded
 		if (event.total) size[num] = event.total
 
 		if (!onUploadProgress) return
@@ -21,10 +21,18 @@ export function combineUploadProgress(onUploadProgress?: onUploadProgress) {
 
 		if (currDate - dateLastUpdate < 1000) return
 
+		const totalSize = size.reduce((acc, s) => acc + s, 0)
+
+		const totalEstimated = estimate.reduce((acc, est) => acc + est, 0)
+
+		const countedProgress = progress.reduce((acc, pr) => acc + pr, 0)
+
+		const totalProgress = countedProgress / totalSize
+
 		onUploadProgress({
-			estimated: estimate.reduce((acc, est) => acc + est, 0),
-			progress: Math.max(...progress) || 0,
-			total: size.reduce((acc, s) => acc + s, 0),
+			estimated: totalEstimated,
+			progress: totalProgress,
+			total: totalSize,
 		})
 	}
 }
