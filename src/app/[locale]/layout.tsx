@@ -1,11 +1,5 @@
 import '@/assets/styles/index.scss'
-import {
-	FileLoaderProvider,
-	LoaderProvider,
-	NavBar,
-	NotificationsProvider,
-} from '@/components'
-import { DragAndDropProvider } from '@/components/DragAndDropProvider'
+import { LoaderProvider, NavBar, NotificationsProvider } from '@/components'
 import { env } from '@/config/env'
 import { availableLocales } from '@/locale'
 import { Metadata } from 'next'
@@ -90,12 +84,8 @@ ym(95870160, "init", {
 				<NextIntlClientProvider locale={locale} messages={messages}>
 					<LoaderProvider>
 						<NotificationsProvider>
-							<FileLoaderProvider>
-								<DragAndDropProvider>
-									<NavBar />
-									{children}
-								</DragAndDropProvider>
-							</FileLoaderProvider>
+							<NavBar />
+							{children}
 						</NotificationsProvider>
 					</LoaderProvider>
 				</NextIntlClientProvider>
