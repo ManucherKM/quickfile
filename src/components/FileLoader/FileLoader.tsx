@@ -3,7 +3,7 @@
 import clsx from 'clsx'
 import { Button, Popup, Title } from 'kuui-react'
 import { useTranslations } from 'next-intl'
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import { Browser } from '../Browser'
 import { Description } from './Description/Description'
 import classes from './FileLoader.module.scss'
@@ -27,8 +27,6 @@ export const FileLoader: FC<IFileLoader> = ({
 }) => {
 	const t = useTranslations()
 
-	const [stage, setStage] = useState<string>(t('waiting_for_server_response'))
-
 	function cancelHandler() {
 		if (onCancel) {
 			onCancel()
@@ -37,12 +35,6 @@ export const FileLoader: FC<IFileLoader> = ({
 
 	const isLoading = !time || !count || !percent || !size
 
-	useEffect(() => {
-		setTimeout(() => {
-			setStage(t('downloading_the_archive'))
-		}, 2000)
-	}, [])
-
 	const styles = clsx([classes.root, isLoading && classes.loader])
 
 	return (
@@ -50,7 +42,7 @@ export const FileLoader: FC<IFileLoader> = ({
 			<Popup className={styles}>
 				{isLoading ? (
 					<div className={classes.wrapperStage}>
-						<Stage>{stage}</Stage>
+						<Stage>{t('waiting_for_server_response')}</Stage>
 					</div>
 				) : (
 					<>
