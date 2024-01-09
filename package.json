@@ -5,11 +5,13 @@
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
+		"build:analyze": "npx ANALYZE=true next build",
 		"start": "next start",
-		"format": "npx prettier --write src/",
+		"format": "prettier --write src/",
 		"lint": "next lint"
 	},
 	"dependencies": {
+		"@next/bundle-analyzer": "^14.0.4",
 		"axios": "^1.6.2",
 		"clsx": "^2.1.0",
 		"env-var": "^7.4.1",

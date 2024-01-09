@@ -31,6 +31,7 @@ function Home({ params: { locale } }: IHome) {
 
 	useEffect(() => {
 		changeFiles(setSelectFiles)
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	useEffect(() => {
@@ -48,6 +49,7 @@ function Home({ params: { locale } }: IHome) {
 			size,
 			time,
 		})
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [time, count, size, percent])
 
 	const styles = clsx(['container', classes.root])

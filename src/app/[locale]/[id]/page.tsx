@@ -37,6 +37,8 @@ const Download: FC<IDownload> = ({ params: { id, locale } }) => {
 			percent,
 			size,
 		})
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [time, percent, size])
 	return (
 		<FileLoaderProvider>
