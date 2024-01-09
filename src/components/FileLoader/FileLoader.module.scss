@@ -30,4 +30,14 @@
 			text-align: left;
 		}
 	}
+
+	.wrapperStage {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+.loader {
+	width: fit-content;
 }

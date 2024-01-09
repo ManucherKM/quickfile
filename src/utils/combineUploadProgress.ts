@@ -5,7 +5,6 @@ export function combineUploadProgress(onUploadProgress?: onUploadProgress) {
 	const estimate: number[] = []
 	const progress: number[] = []
 	const size: number[] = []
-	let dateLastUpdate = Date.now()
 
 	return function WrapperOnUploadProgress(
 		event: AxiosProgressEvent,
@@ -16,10 +15,6 @@ export function combineUploadProgress(onUploadProgress?: onUploadProgress) {
 		if (event.total) size[num] = event.total
 
 		if (!onUploadProgress) return
-
-		const currDate = Date.now()
-
-		if (currDate - dateLastUpdate < 1000) return
 
 		const totalSize = size.reduce((acc, s) => acc + s, 0)
 

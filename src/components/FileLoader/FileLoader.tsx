@@ -1,5 +1,6 @@
 'use client'
 
+import clsx from 'clsx'
 import { Button, Popup, Title } from 'kuui-react'
 import { FC, useEffect, useState } from 'react'
 import { Browser } from '../Browser'
@@ -39,11 +40,15 @@ export const FileLoader: FC<IFileLoader> = ({
 		}, 2000)
 	}, [])
 
+	const styles = clsx([classes.root, isLoading && classes.loader])
+
 	return (
 		<Browser>
-			<Popup className={classes.root}>
+			<Popup className={styles}>
 				{isLoading ? (
-					<Stage>{stage}</Stage>
+					<div className={classes.wrapperStage}>
+						<Stage>{stage}</Stage>
+					</div>
 				) : (
 					<>
 						<div className={classes.wrapperTimer}>

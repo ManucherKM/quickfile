@@ -1,7 +1,7 @@
 'use client'
 
 import { useArchiveLoaderStore } from '@/storage'
-import { FC, ReactNode } from 'react'
+import { FC, ReactNode, useEffect, useState } from 'react'
 import { FileLoader } from './FileLoader/FileLoader'
 
 export interface IFileLoaderProvider {
@@ -14,10 +14,16 @@ export const FileLoaderProvider: FC<IFileLoaderProvider> = ({ children }) => {
 	)
 	const onCancel = useArchiveLoaderStore(store => store.onCancel)
 	const resetArchiveLoaderStore = useArchiveLoaderStore(store => store.reset)
-	const count = useArchiveLoaderStore(store => store.count)
-	const time = useArchiveLoaderStore(store => store.time)
-	const size = useArchiveLoaderStore(store => store.size)
-	const percent = useArchiveLoaderStore(store => store.percent)
+	const countStore = useArchiveLoaderStore(store => store.count)
+	const timeStore = useArchiveLoaderStore(store => store.time)
+	const sizeStore = useArchiveLoaderStore(store => store.size)
+	const percentStore = useArchiveLoaderStore(store => store.percent)
+
+	const [dateLastUpdate, setDateLastUpdate] = useState<number>(Date.now())
+	const [count, setCount] = useState<string | undefined>(countStore)
+	const [time, setTime] = useState<string | undefined>(timeStore)
+	const [size, setSize] = useState<string | undefined>(sizeStore)
+	const [percent, setPercent] = useState<string | undefined>(percentStore)
 
 	function cancelHandler() {
 		if (onCancel) {
@@ -25,15 +31,28 @@ export const FileLoaderProvider: FC<IFileLoaderProvider> = ({ children }) => {
 			resetArchiveLoaderStore()
 		}
 	}
+
+	useEffect(() => {
+		const currDate = Date.now()
+
+		if (currDate - dateLastUpdate < 1000) return
+
+		setDateLastUpdate(Date.now())
+		setCount(count)
+		setTime(time)
+		setSize(size)
+		setPercent(percent)
+	}, [countStore, timeStore, sizeStore, percentStore])
+
 	return (
 		<>
 			{isShowFileLoader && (
 				<FileLoader
 					onCancel={cancelHandler}
-					time={time}
-					count={count}
-					size={size}
-					percent={percent}
+					time={timeStore}
+					count={countStore}
+					size={sizeStore}
+					percent={percentStore}
 				/>
 			)}
 			{children}
