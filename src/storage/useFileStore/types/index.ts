@@ -6,9 +6,24 @@ export interface IFileData {
 	size: number
 }
 
+export interface IUploadUrlFileds {
+	bucket: string
+	'X-Amz-Algorithm': string
+	'X-Amz-Credential': string
+	'X-Amz-Date': string
+	key: string
+	Policy: string
+	'X-Amz-Signature': string
+}
+
+export interface IUploadUrl {
+	url: string
+	fields: IUploadUrlFileds
+}
+
 export interface ISendFilesRes {
 	id: string
-	urls: string[]
+	urls: IUploadUrl[]
 }
 
 export interface IProgressEvent {

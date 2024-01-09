@@ -40,10 +40,19 @@ export const useFileStore = create<IFileStore>(() => ({
 			const promises = []
 
 			for (let i = 0; i < files.length; i++) {
-				const url = urls[i]
+				const { url, fields } = urls[i]
+				const file = files[i]
+
+				const formData = new FormData()
+
+				Object.entries(fields).forEach(([field, value]) => {
+					formData.append(field, value)
+				})
+
+				formData.append('file', file)
 
 				promises.push(
-					axios.put(url, files[i], {
+					axios.post<void>(url, formData, {
 						onUploadProgress: onUploadProgress
 							? event => combinedOnUploadProgress(event, i)
 							: undefined,
