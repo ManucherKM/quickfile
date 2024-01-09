@@ -5,4 +5,8 @@
 	gap: 8px;
 	width: 100%;
 	max-width: 110px;
+
+	@media (max-width: 400px) {
+		max-width: 100%;
+	}
 }
