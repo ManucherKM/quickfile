@@ -87,8 +87,7 @@ function Home({ params: { locale } }: IHome) {
 							<FileAdd
 								className={classes.fileAdd}
 								variant="area"
-								// Fix it
-								wrapperAreaLabel="asd"
+								wrapperAreaLabel={t('input_for_files')}
 								onChange={e => {
 									setSelectFiles(e.target.files)
 

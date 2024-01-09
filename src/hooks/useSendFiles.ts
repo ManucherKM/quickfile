@@ -45,7 +45,7 @@ export function useSendFiles(
 			if (!selectFiles) return
 
 			if (!fileSizeValidator(selectFiles)) {
-				newError('Максимальный размер файлов - 500 МБ')
+				newError(t('the_maximum_file_size_is_500_mb'))
 				return
 			}
 

@@ -2,6 +2,7 @@
 
 import clsx from 'clsx'
 import { Button, Popup, Title } from 'kuui-react'
+import { useTranslations } from 'next-intl'
 import { FC, useEffect, useState } from 'react'
 import { Browser } from '../Browser'
 import { Description } from './Description/Description'
@@ -24,7 +25,9 @@ export const FileLoader: FC<IFileLoader> = ({
 	size,
 	onCancel,
 }) => {
-	const [stage, setStage] = useState<string>('Ожидание ответа сервера')
+	const t = useTranslations()
+
+	const [stage, setStage] = useState<string>(t('waiting_for_server_response'))
 
 	function cancelHandler() {
 		if (onCancel) {
@@ -36,7 +39,7 @@ export const FileLoader: FC<IFileLoader> = ({
 
 	useEffect(() => {
 		setTimeout(() => {
-			setStage('Загрузка архива')
+			setStage(t('downloading_the_archive'))
 		}, 2000)
 	}, [])
 
@@ -55,15 +58,18 @@ export const FileLoader: FC<IFileLoader> = ({
 							<Title className={classes.timer} dimension="large">
 								{time}
 							</Title>
-							<Description>до окончания загрузки</Description>
+							<Description>{t('before_the_download_is_complete')}</Description>
 						</div>
 						<div className={classes.wrapperInfo}>
-							<Info info={size + ' МБ'} description="общий размер" />
-							<Info info={count} description="файлы" />
-							<Info info={percent} description="прогресс" />
+							<Info
+								info={size + ' ' + t('mb')}
+								description={t('overall_size')}
+							/>
+							<Info info={count} description={t('files')} />
+							<Info info={percent} description={t('progress')} />
 						</div>
 						<Button variant="active" onClick={cancelHandler}>
-							Отменить
+							{t('cancel')}
 						</Button>
 					</>
 				)}
