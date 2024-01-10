@@ -8,8 +8,11 @@ import { getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import Script from 'next/script'
 import { ReactNode } from 'react'
-import AppleIcon from '../apple-touch-icon.png'
-import Favicon from '../favicon.ico'
+
+import AppleTouchIcon from '../icons/apple-touch-icon.png'
+import Favicon16 from '../icons/favicon-16x16.png'
+import Favicon32 from '../icons/favicon-32x32.png'
+import Favicon from '../icons/favicon.ico'
 
 const CLIENT_URL = env.get('CLIENT_URL').required().asString()
 
@@ -44,7 +47,19 @@ export async function generateMetadata({
 		},
 		icons: [
 			{ rel: 'icon', url: Favicon.src },
-			{ rel: 'apple-touch-icon', url: AppleIcon.src },
+			{ rel: 'apple-touch-icon', sizes: '180x180', url: AppleTouchIcon.src },
+			{
+				rel: 'icon',
+				type: 'image/png',
+				sizes: '32x32',
+				url: Favicon32.src,
+			},
+			{
+				rel: 'icon',
+				type: 'image/png',
+				sizes: '16x16',
+				url: Favicon16.src,
+			},
 		],
 	} as Metadata
 }
@@ -80,6 +95,7 @@ ym(95870160, "init", {
 });
 `}
 			</Script>
+
 			<body>
 				<NextIntlClientProvider locale={locale} messages={messages}>
 					<LoaderProvider>
