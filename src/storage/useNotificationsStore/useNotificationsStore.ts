@@ -3,13 +3,13 @@ import type { INotification, INotificationsStore } from './types'
 import { create } from 'zustand'
 import { ENotificationVariant } from './types'
 
-const defaultNotificationsStore = {
-	notifications: [],
-}
+const defaultStore = {
+	notifications: [] as INotification[],
+} as INotificationsStore
 
 export const useNotificationsStore = create<INotificationsStore>(
 	(set, get) => ({
-		...defaultNotificationsStore,
+		...defaultStore,
 		newMessage(text) {
 			const idx = get().notifications.findIndex(n => {
 				const isMessage = n.variant === ENotificationVariant.message
@@ -54,7 +54,7 @@ export const useNotificationsStore = create<INotificationsStore>(
 			set({ notifications: newNotifications })
 		},
 		reset() {
-			set(defaultNotificationsStore)
+			set(defaultStore)
 		},
 	}),
 )

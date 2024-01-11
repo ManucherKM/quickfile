@@ -1,15 +1,21 @@
-import { onUploadProgress } from '@/storage/useFileStore/types'
+import { IProgressEvent } from '@/storage/useFileStore/types'
 import { AxiosProgressEvent } from 'axios'
 
-export function combineUploadProgress(onUploadProgress?: onUploadProgress) {
+export type onUploadProgress = (event: IProgressEvent) => void
+
+export type TWrapperOnUploadProgress = (
+	event: AxiosProgressEvent,
+	num: number,
+) => void
+
+export function combineUploadProgress(
+	onUploadProgress: onUploadProgress,
+): TWrapperOnUploadProgress {
 	const estimate: number[] = []
 	const progress: number[] = []
 	const size: number[] = []
 
-	return function WrapperOnUploadProgress(
-		event: AxiosProgressEvent,
-		num: number,
-	) {
+	return function WrapperOnUploadProgress(event, num) {
 		if (event.estimated) estimate[num] = event.estimated
 		if (event.progress) progress[num] = event.loaded
 		if (event.total) size[num] = event.total

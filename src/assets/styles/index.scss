@@ -12,6 +12,7 @@
 
 body {
 	background-color: var(--kuui-black-1000);
+	overflow-x: hidden;
 
 	&:hover {
 		&::-webkit-scrollbar-thumb {

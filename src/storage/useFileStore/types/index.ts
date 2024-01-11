@@ -1,3 +1,4 @@
+import { TWrapperOnUploadProgress } from '@/utils'
 import { AxiosRequestConfig } from 'axios'
 
 export interface IFileData {
@@ -16,14 +17,19 @@ export interface IUploadUrlFileds {
 	'X-Amz-Signature': string
 }
 
-export interface IUploadUrl {
+export interface IUploadInfo {
 	url: string
 	fields: IUploadUrlFileds
 }
 
+export interface ICreateFileUploadUrlRes {
+	id: string
+	urls: IUploadInfo[]
+}
+
 export interface ISendFilesRes {
 	id: string
-	urls: IUploadUrl[]
+	urls: IUploadInfo[]
 }
 
 export interface IProgressEvent {
@@ -32,25 +38,29 @@ export interface IProgressEvent {
 	total: number
 }
 
-export type onUploadProgress = (event: IProgressEvent) => void
-
 export interface IExistArchiveResponse {
 	exist: boolean
 	length?: string
 }
 
+export type SendFileAxiosRequestConfig = {
+	onUploadProgress?: TWrapperOnUploadProgress
+} & Omit<AxiosRequestConfig, 'onUploadProgress'>
+
 export interface IFileStore {
+	createFileUploadUrl: (
+		fileList: FileList,
+	) => Promise<ICreateFileUploadUrlRes | undefined>
 	sendFiles: (
 		files: FileList,
-		onUploadProgress?: onUploadProgress,
-		abortController?: AbortController,
-	) => Promise<string | false>
+		uploadInfo: IUploadInfo[],
+		config?: SendFileAxiosRequestConfig,
+	) => Promise<void>
 	downloadArchive: (
 		id: string,
-		onDownloadProgress?: AxiosRequestConfig<any>['onDownloadProgress'],
-		abortController?: AbortController,
-	) => Promise<boolean>
-	checkExistArchive: (id: string) => Promise<IExistArchiveResponse>
+		config?: Omit<AxiosRequestConfig, 'responseType'>,
+	) => Promise<void>
+	checkExistArchive: (id: string) => Promise<IExistArchiveResponse | undefined>
 }
 
 export enum EFileStoreApiRoutes {

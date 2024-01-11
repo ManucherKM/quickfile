@@ -4,11 +4,13 @@ import {
 	useNotificationsStore,
 } from '@/storage'
 import { IProgressEvent } from '@/storage/useFileStore/types'
-import { fileSizeValidator } from '@/utils'
+import { combineUploadProgress, fileSizeValidator } from '@/utils'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
-import { useAbort, useArchiveLoader } from '.'
+import { useAbort } from './useAbort'
+import { useArchiveLoader } from './useArchiveLoader'
+import { useLoader } from './useLoader'
 
 export function useSendFiles(
 	selectFiles: FileList | null,
@@ -20,10 +22,12 @@ export function useSendFiles(
 	const newError = useNotificationsStore(store => store.newError)
 	const newMessage = useNotificationsStore(store => store.newMessage)
 	const sendFiles = useFileStore(store => store.sendFiles)
+	const createFileUploadUrl = useFileStore(store => store.createFileUploadUrl)
 	const setOnCancel = useArchiveLoaderStore(store => store.setOnCancel)
 	const [isAbort, abortController, resetAbort] = useAbort()
 
-	const loader = useArchiveLoader()
+	const archiveLoader = useArchiveLoader()
+	const loader = useLoader()
 
 	useEffect(() => {
 		setOnCancel(() => {
@@ -49,25 +53,36 @@ export function useSendFiles(
 				return
 			}
 
-			const id = await loader(
-				sendFiles,
-				selectFiles,
-				onUploadProgress,
-				abortController.current,
-			)
+			const archiveData = await loader(createFileUploadUrl, selectFiles)
 
-			if (!id) {
-				if (isAbort.current) return
-
+			if (!archiveData) {
 				newError(t('failed_to_save_file(s)'))
 				return
 			}
 
+			const { id: archiveId, urls: uploadInfo } = archiveData
+
+			let uploadProgressHandler
+
+			if (onUploadProgress) {
+				uploadProgressHandler = combineUploadProgress(onUploadProgress)
+			}
+
+			await archiveLoader(sendFiles, selectFiles, uploadInfo, {
+				onUploadProgress: uploadProgressHandler,
+				signal: abortController.current.signal,
+			})
+
+			if (isAbort.current) return
+
 			newMessage(t('the_files_have_been_saved'))
 
-			router.push(`/${locale}/share/${id}`)
+			router.push(`/${locale}/share/${archiveId}`)
 		} catch (e) {
 			console.log(e)
+
+			if (!isAbort.current) return
+			newError(t('failed_to_save_file(s)'))
 		} finally {
 			resetAbort()
 		}

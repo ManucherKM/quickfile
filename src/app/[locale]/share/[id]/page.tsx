@@ -44,9 +44,9 @@ export default function Share({ params: { id, locale } }: IShare) {
 			try {
 				setLoading(true)
 
-				const isSuccess = await checkExistArchive(id)
+				const res = await checkExistArchive(id)
 
-				if (!isSuccess) {
+				if (!res?.exist) {
 					newError(t('the_file_could_not_be_found'))
 					router.push('/' + locale)
 				}

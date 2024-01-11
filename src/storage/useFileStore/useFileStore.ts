@@ -1,98 +1,89 @@
 import axios from '@/config/axios'
-import { combineUploadProgress, downloadFileFromBuffer } from '@/utils'
+import {
+	TWrapperOnUploadProgress,
+	downloadFileFromBuffer,
+	formatFileListToArray,
+	formatFilesForSend,
+	getFormData,
+} from '@/utils'
+import { AxiosProgressEvent, AxiosRequestConfig } from 'axios'
 import { create } from 'zustand'
-import { useArchiveLoaderStore } from '..'
 import type {
+	ICreateFileUploadUrlRes,
 	IExistArchiveResponse,
 	IFileData,
 	IFileStore,
-	ISendFilesRes,
 } from './types'
 import { EFileStoreApiRoutes } from './types'
 
 /** With this hook you can access the file storage. */
 export const useFileStore = create<IFileStore>(() => ({
-	async sendFiles(selectedFiles, onUploadProgress, abortController) {
+	async createFileUploadUrl(fileList) {
 		try {
-			const files = Array.from(selectedFiles)
+			const formatedFiles: IFileData[] = formatFilesForSend(fileList)
 
-			const dataFiles: IFileData[] = []
-
-			for (const file of files) {
-				const data: IFileData = {
-					originalName: file.name,
-					mimetype: file.type,
-					size: file.size,
-				}
-
-				dataFiles.push(data)
-			}
-
-			const resApi = await axios.post<ISendFilesRes>(
+			const { data } = await axios.post<ICreateFileUploadUrlRes>(
 				EFileStoreApiRoutes.archiveManagement,
-				{ files: dataFiles },
+				{ files: formatedFiles },
 			)
 
-			const { id, urls } = resApi.data
+			return data
+		} catch (e) {
+			console.error(e)
+		}
+	},
+	async sendFiles(selectedFiles, uploadInfo, config) {
+		try {
+			const files = formatFileListToArray(selectedFiles)
 
-			const combinedOnUploadProgress = combineUploadProgress(onUploadProgress)
-
-			const promises = []
+			const uploadPromises = []
 
 			for (let i = 0; i < files.length; i++) {
-				const { url, fields } = urls[i]
+				const { url, fields } = uploadInfo[i]
 				const file = files[i]
 
-				const formData = new FormData()
-
-				Object.entries(fields).forEach(([field, value]) => {
-					formData.append(field, value)
-				})
+				const formData = getFormData(fields)
 
 				formData.append('file', file)
 
-				promises.push(
-					axios.post<void>(url, formData, {
-						onUploadProgress: onUploadProgress
-							? event => combinedOnUploadProgress(event, i)
-							: undefined,
-						signal: abortController?.signal,
-					}),
+				if (config && config.onUploadProgress) {
+					const { onUploadProgress } = config
+
+					const uploadProgressHandler: TWrapperOnUploadProgress =
+						onUploadProgress
+
+					config.onUploadProgress = function (event: AxiosProgressEvent) {
+						uploadProgressHandler(event, i)
+					}
+				}
+
+				const uploadPromise = axios.post<undefined>(
+					url,
+					formData,
+					config as AxiosRequestConfig,
 				)
+
+				uploadPromises.push(uploadPromise)
 			}
 
-			await Promise.all(promises)
-
-			return id
+			await Promise.all(uploadPromises)
 		} catch (e) {
 			// We display the error in the console.
-			console.log(e)
-
-			// Return false.
-			return false
-		} finally {
-			useArchiveLoaderStore.getState().reset()
+			console.error(e)
 		}
 	},
-	async downloadArchive(id, onDownloadProgress, abortController) {
+	async downloadArchive(id, config) {
 		try {
 			const url = EFileStoreApiRoutes.archiveManagement + '/' + id
 
 			const { data } = await axios.get<Buffer>(url, {
 				responseType: 'arraybuffer',
-				onDownloadProgress,
-				signal: abortController?.signal,
+				...config,
 			})
 
 			downloadFileFromBuffer(data)
-
-			return true
 		} catch (e) {
-			console.log(e)
-
-			return false
-		} finally {
-			useArchiveLoaderStore.getState().reset()
+			console.error(e)
 		}
 	},
 	async checkExistArchive(id) {
@@ -103,11 +94,7 @@ export const useFileStore = create<IFileStore>(() => ({
 
 			return data
 		} catch (e) {
-			console.log(e)
-
-			return {
-				exist: false,
-			}
+			console.error(e)
 		}
 	},
 }))

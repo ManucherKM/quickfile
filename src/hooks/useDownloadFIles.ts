@@ -39,20 +39,16 @@ export function useDownloadFiles(
 			// If the identifier is not found, stop executing the function.
 			if (!id) return false
 
-			// We get the result of the request.
-			const isSuccess = await loader(
-				downloadArchive,
-				id,
+			await loader(downloadArchive, id, {
 				onDownloadProgress,
-				abortController.current,
-			)
-
-			if (!isSuccess && !isAbort.current) {
-				// Show the user an error message.
-				newError(t('failed_to_download_archive'))
-			}
+				signal: abortController.current.signal,
+			})
 		} catch (e) {
 			console.log(e)
+
+			if (!isAbort.current) {
+				newError(t('failed_to_download_archive'))
+			}
 		} finally {
 			resetAbort()
 		}
