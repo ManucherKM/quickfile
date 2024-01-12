@@ -1,0 +1,15 @@
+.root {
+	padding-top: 16px;
+	padding-bottom: 16px;
+
+	.button {
+		width: fit-content;
+		cursor: pointer;
+		transition: all 200ms;
+
+		&:hover {
+			transition: all 200ms;
+			color: var(--kuui-dominant-1);
+		}
+	}
+}

@@ -1,4 +1,5 @@
 import {
+	useAgreementPolicyStore,
 	useArchiveLoaderStore,
 	useFileStore,
 	useNotificationsStore,
@@ -25,6 +26,8 @@ export function useSendFiles(
 	const createFileUploadUrl = useFileStore(store => store.createFileUploadUrl)
 	const setOnCancel = useArchiveLoaderStore(store => store.setOnCancel)
 	const [isAbort, abortController, resetAbort] = useAbort()
+	const isAgreedPolicy = useAgreementPolicyStore(store => store.isAgreed)
+	const setShowAgreement = useAgreementPolicyStore(store => store.setShow)
 
 	const archiveLoader = useArchiveLoader()
 	const loader = useLoader()
@@ -46,6 +49,11 @@ export function useSendFiles(
 
 	return async function () {
 		try {
+			if (!isAgreedPolicy) {
+				setShowAgreement(true)
+				return
+			}
+
 			if (!selectFiles) return
 
 			if (!fileSizeValidator(selectFiles)) {

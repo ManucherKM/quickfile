@@ -1,9 +1,10 @@
 'use client'
 
-import { QRCode } from '@/components'
+import { NavBarBack, QRCode } from '@/components'
 import { env } from '@/config/env'
 import { useFileStore, useNotificationsStore, useStore } from '@/storage'
 import { writeTextIntoClipboard } from '@/utils'
+import clsx from 'clsx'
 import { Button } from 'kuui-react'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
@@ -62,11 +63,16 @@ export default function Share({ params: { id, locale } }: IShare) {
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
+
+	const styles = clsx(['container', classes.root])
 	return (
-		<div className={classes.root}>
-			<QRCode link={url} />
-			<span>{t('or')}</span>
-			<Button onClick={copyHandler}>{t('copy_link')}</Button>
-		</div>
+		<>
+			<NavBarBack />
+			<div className={styles}>
+				<QRCode link={url} />
+				<span>{t('or')}</span>
+				<Button onClick={copyHandler}>{t('copy_link')}</Button>
+			</div>
+		</>
 	)
 }

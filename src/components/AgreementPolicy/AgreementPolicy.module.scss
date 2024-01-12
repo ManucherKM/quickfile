@@ -1,0 +1,29 @@
+.root {
+	width: 100%;
+	max-width: 400px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	margin: 16px;
+
+	.wrapperAgreement {
+		cursor: pointer;
+		display: flex;
+		gap: 12px;
+		align-items: center;
+		width: fit-content;
+
+		.agreementText {
+			cursor: pointer;
+		}
+	}
+
+	.link {
+		text-decoration: none;
+		color: var(--kuui-dominant-1);
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}

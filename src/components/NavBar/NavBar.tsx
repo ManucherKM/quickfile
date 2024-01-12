@@ -12,13 +12,21 @@ export interface IListItem extends Omit<LinkProps, 'href'> {
 	href: string
 }
 
-export const NavBar: FC = () => {
+export interface INavBar {
+	locale: string
+}
+
+export const NavBar: FC<INavBar> = ({ locale }) => {
 	const t = useTranslations()
 
 	const listItems: IListItem[] = [
 		{
 			href: '#FAQ',
 			content: t('faq'),
+		},
+		{
+			href: `${locale}/policy`,
+			content: 'Policy',
 		},
 	]
 
