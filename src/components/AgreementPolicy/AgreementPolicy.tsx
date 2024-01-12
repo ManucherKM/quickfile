@@ -39,7 +39,6 @@ export const AgreementPolicy: FC<IAgreementPolicy> = ({ locale }) => {
 
 	return (
 		<Browser>
-			AgreementPolicy
 			<Popup
 				className={classes.root}
 				onClose={closeHandler}
@@ -62,6 +61,7 @@ export const AgreementPolicy: FC<IAgreementPolicy> = ({ locale }) => {
 							variant="box"
 							checked={isLoacalAgreed}
 							onChange={checkboxHandler}
+							className={classes.checkbox}
 						/>
 					</div>
 					<Paragraph className={classes.agreementText} align="justify">
