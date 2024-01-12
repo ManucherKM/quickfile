@@ -1,0 +1,81 @@
+.root {
+	padding-top: 16px;
+	padding-bottom: 16px;
+	display: none;
+
+	@media (max-width: 576px) {
+		display: block;
+	}
+
+	.controlls {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.burger {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		border: 1px solid transparent;
+		border-radius: 4px;
+		background-color: transparent;
+		padding: 8px;
+		transition: all 200ms;
+
+		svg {
+			path {
+				stroke: var(--kuui-black-250);
+			}
+		}
+
+		&:focus,
+		&:hover {
+			transition: all 200ms;
+			background-color: var(--kuui-black-500);
+
+			svg {
+				path {
+					stroke: var(--kuui-dominant-1);
+				}
+			}
+		}
+	}
+
+	.lighthouse {
+		position: relative;
+
+		.list {
+			width: 100%;
+			position: absolute;
+			display: flex;
+			flex-direction: column;
+			display: none;
+
+			&.show {
+				display: block;
+			}
+
+			.wrapperLink {
+				list-style: none;
+				outline: none;
+
+				a {
+					padding: 10px;
+					display: block;
+					text-decoration: none;
+					color: var(--kuui-dominant-2);
+					border-radius: 4px;
+					outline: none;
+
+					&:hover,
+					&:focus {
+						background-color: var(--kuui-black-500);
+						color: var(--kuui-dominant-1);
+					}
+				}
+			}
+		}
+	}
+}
