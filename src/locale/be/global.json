@@ -57,5 +57,14 @@
 	"progress": "прагрэс",
 	"mb": "МБ",
 	"cancel": "Адмяніць",
-	"before_the_download_is_complete": "да заканчэння загрузкі"
+	"before_the_download_is_complete": "да заканчэння загрузкі",
+	"functionality_unlocked": "Функцыянал разблакаваны",
+	"without_an_agreement_you_cannot_use_our_service": "Без пагаднення вы не можаце карыстацца нашым сэрвісам",
+	"important": "Важна",
+	"by_using_our_service_you_agree_with": "Карыстаючыся нашым сэрвісам вы згаджаецеся з",
+	"conditions_of_use": "ўмовамі выкарыстання",
+	"i_agree_to_the_terms_of_use": "Я згодны з умовамі выкарыстання",
+	"confirm": "Пацвердзіць",
+	"back": "Назад",
+	"usage_policy": "Палітыка"
 }

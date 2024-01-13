@@ -57,5 +57,14 @@
 	"progress": "progrès",
 	"mb": "Mo",
 	"cancel": "Abolir",
-	"before_the_download_is_complete": "avant la fin du téléchargement"
+	"before_the_download_is_complete": "avant la fin du téléchargement",
+	"functionality_unlocked": "Fonctionnalité déverrouillée",
+	"without_an_agreement_you_cannot_use_our_service": "Sans accord, vous ne pouvez pas utiliser notre service",
+	"important": "C'est important",
+	"by_using_our_service_you_agree_with": "En utilisant notre service, vous acceptez",
+	"conditions_of_use": "conditions d'utilisation",
+	"i_agree_to_the_terms_of_use": "J'accepte les conditions d'utilisation",
+	"confirm": "Accuser réception",
+	"back": "Retour",
+	"usage_policy": "Politique"
 }

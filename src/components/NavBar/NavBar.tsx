@@ -21,7 +21,7 @@ export const NavBar: FC<INavBar> = ({ locale }) => {
 		},
 		{
 			href: `${locale}/policy`,
-			content: 'Policy',
+			content: t('usage_policy'),
 		},
 	]
 

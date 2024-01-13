@@ -57,5 +57,14 @@
 	"progress": "прогресс",
 	"mb": "МБ",
 	"cancel": "Бас тарту",
-	"before_the_download_is_complete": "жүктеу аяқталғанға дейін"
+	"before_the_download_is_complete": "жүктеу аяқталғанға дейін",
+	"functionality_unlocked": "Функционалдылық құлыптан босатылды",
+	"without_an_agreement_you_cannot_use_our_service": "Келісімсіз сіз біздің қызметті пайдалана алмайсыз",
+	"important": "Маңызды",
+	"by_using_our_service_you_agree_with": "Біздің қызметті пайдалана отырып сіз келісесіз",
+	"conditions_of_use": "пайдалану шарттары",
+	"i_agree_to_the_terms_of_use": "Мен пайдалану шарттарымен келісемін",
+	"confirm": "Растау",
+	"back": "Артқа",
+	"usage_policy": "Саясат"
 }

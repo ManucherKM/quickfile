@@ -57,5 +57,14 @@
 	"progress": "progress",
 	"mb": "MB",
 	"cancel": "Cancel",
-	"before_the_download_is_complete": "before the download is complete"
+	"before_the_download_is_complete": "before the download is complete",
+	"functionality_unlocked": "Functionality unlocked",
+	"without_an_agreement_you_cannot_use_our_service": "Without an agreement, you cannot use our service",
+	"important": "It's important",
+	"by_using_our_service_you_agree_with": "By using our service you agree with",
+	"conditions_of_use": "conditions of use",
+	"i_agree_to_the_terms_of_use": "I agree to the terms of use",
+	"confirm": "Confirm",
+	"back": "Back",
+	"usage_policy": "Policy"
 }

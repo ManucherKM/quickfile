@@ -57,5 +57,14 @@
 	"progress": "Fortschritte",
 	"mb": "MB",
 	"cancel": "Abschaffung von",
-	"before_the_download_is_complete": "bevor der Download abgeschlossen ist"
+	"before_the_download_is_complete": "bevor der Download abgeschlossen ist",
+	"functionality_unlocked": "Funktionalitäten freigeschaltet",
+	"without_an_agreement_you_cannot_use_our_service": "Ohne eine Vereinbarung können Sie unseren Dienst nicht nutzen",
+	"important": "Es ist wichtig",
+	"by_using_our_service_you_agree_with": "Mit der Nutzung unseres Dienstes erklären Sie sich einverstanden mit",
+	"conditions_of_use": "Einsatzbedingungen",
+	"i_agree_to_the_terms_of_use": "Ich akzeptiere die Nutzungsbedingungen",
+	"confirm": "Bestätigen Sie",
+	"back": "Zurück",
+	"usage_policy": "Politik"
 }

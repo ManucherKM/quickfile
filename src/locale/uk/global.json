@@ -57,5 +57,14 @@
 	"progress": "прогрес",
 	"mb": "МБ",
 	"cancel": "Скасувати",
-	"before_the_download_is_complete": "до закінчення завантаження"
+	"before_the_download_is_complete": "до закінчення завантаження",
+	"functionality_unlocked": "Функціонал розблоковано",
+	"without_an_agreement_you_cannot_use_our_service": "Без угоди ви не можете користуватися нашим сервісом",
+	"important": "Важливо",
+	"by_using_our_service_you_agree_with": "Користуючись нашим сервісом ви погоджуєтеся з",
+	"conditions_of_use": "умовами використання",
+	"i_agree_to_the_terms_of_use": "Я згоден з умовами використання",
+	"confirm": "Підтвердити",
+	"back": "Назад",
+	"usage_policy": "Політика"
 }

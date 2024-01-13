@@ -58,5 +58,14 @@
 	"progress": "прогресс",
 	"mb": "МБ",
 	"cancel": "Отменить",
-	"before_the_download_is_complete": "до окончания загрузки"
+	"before_the_download_is_complete": "до окончания загрузки",
+	"functionality_unlocked": "Функционал разблокирован",
+	"without_an_agreement_you_cannot_use_our_service": "Без соглашения вы не можете пользоваться нашим сервисом",
+	"important": "Важно",
+	"by_using_our_service_you_agree_with": "Пользуясь нашим сервисом вы соглашаетесь с",
+	"conditions_of_use": "условиями использования",
+	"i_agree_to_the_terms_of_use": "Я согласен с условиями использования",
+	"confirm": "Подтвердить",
+	"back": "Назад",
+	"usage_policy": "Политика"
 }

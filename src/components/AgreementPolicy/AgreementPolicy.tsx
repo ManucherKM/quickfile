@@ -2,6 +2,7 @@
 
 import { useAgreementPolicyStore, useNotificationsStore } from '@/storage'
 import { Button, CheckBox, Paragraph, Popup, Title } from 'kuui-react'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { ChangeEvent, FC, useState } from 'react'
 import { Browser } from '../Browser'
@@ -17,6 +18,7 @@ export const AgreementPolicy: FC<IAgreementPolicy> = ({ locale }) => {
 	const setShow = useAgreementPolicyStore(store => store.setShow)
 	const newMessage = useNotificationsStore(store => store.newMessage)
 	const newError = useNotificationsStore(store => store.newError)
+	const t = useTranslations()
 
 	function checkboxHandler(e: ChangeEvent<HTMLInputElement>) {
 		setIsLocalAgreed(e.target.checked)
@@ -26,15 +28,15 @@ export const AgreementPolicy: FC<IAgreementPolicy> = ({ locale }) => {
 		if (isLoacalAgreed) {
 			setAgreed(true)
 			setShow(false)
-			newMessage('Функционал разблокирован')
+			newMessage(t('functionality_unlocked'))
 		} else {
-			newError('Без соглашения вы не можете пользоваться нашим сервисом')
+			newError(t('without_an_agreement_you_cannot_use_our_service'))
 		}
 	}
 
 	function closeHandler() {
 		setShow(false)
-		newError('Без соглашения вы не можете пользоваться нашим сервисом')
+		newError(t('without_an_agreement_you_cannot_use_our_service'))
 	}
 
 	return (
@@ -44,15 +46,15 @@ export const AgreementPolicy: FC<IAgreementPolicy> = ({ locale }) => {
 				onClose={closeHandler}
 				onClick={e => e.stopPropagation()}
 			>
-				<Title align="center">Важно!</Title>
+				<Title align="center">{t('important')}</Title>
 				<Paragraph align="justify">
-					Пользуясь нашим сервисом вы соглашаетесь с{' '}
+					{t('by_using_our_service_you_agree_with')}{' '}
 					<Link
 						target="_blank"
 						className={classes.link}
 						href={`${locale}/policy`}
 					>
-						условиями использования
+						{t('conditions_of_use')}
 					</Link>
 				</Paragraph>
 				<label className={classes.wrapperAgreement}>
@@ -65,11 +67,11 @@ export const AgreementPolicy: FC<IAgreementPolicy> = ({ locale }) => {
 						/>
 					</div>
 					<Paragraph className={classes.agreementText} align="justify">
-						Я согласен с условиями использования
+						{t('i_agree_to_the_terms_of_use')}
 					</Paragraph>
 				</label>
 				<Button variant="active" onClick={agreedHandler}>
-					Подтвердить
+					{t('confirm')}
 				</Button>
 			</Popup>
 		</Browser>
