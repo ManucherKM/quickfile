@@ -5,7 +5,11 @@ import {
 	useNotificationsStore,
 } from '@/storage'
 import { IProgressEvent } from '@/storage/useFileStore/types'
-import { combineUploadProgress, fileSizeValidator } from '@/utils'
+import {
+	combineUploadProgress,
+	fileSizeValidator,
+	formatFileListToArray,
+} from '@/utils'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
@@ -48,12 +52,12 @@ export function useSendFiles(
 	}, [isAbort.current])
 
 	return async function () {
-		try {
-			if (!isAgreedPolicy) {
-				setShowAgreement(true)
-				return
-			}
+		if (!isAgreedPolicy) {
+			setShowAgreement(true)
+			return
+		}
 
+		try {
 			if (!selectFiles) return
 
 			if (!fileSizeValidator(selectFiles)) {
@@ -61,7 +65,9 @@ export function useSendFiles(
 				return
 			}
 
-			const archiveData = await loader(createFileUploadUrl, selectFiles)
+			const files = formatFileListToArray(selectFiles)
+
+			const archiveData = await loader(createFileUploadUrl, files)
 
 			if (!archiveData) {
 				newError(t('failed_to_save_file(s)'))
@@ -76,7 +82,7 @@ export function useSendFiles(
 				uploadProgressHandler = combineUploadProgress(onUploadProgress)
 			}
 
-			await archiveLoader(sendFiles, selectFiles, uploadInfo, {
+			await archiveLoader(sendFiles, files, uploadInfo, {
 				onUploadProgress: uploadProgressHandler,
 				signal: abortController.current.signal,
 			})

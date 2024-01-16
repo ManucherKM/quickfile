@@ -1,9 +1,9 @@
 import { IFileData } from '@/storage/useFileStore/types'
 
-export function formatFilesForSend(fileList: FileList) {
+export function formatFilesForSend(files: File[]) {
 	const data: IFileData[] = []
 
-	for (const file of fileList) {
+	for (const file of files) {
 		data[data.length] = {
 			originalName: file.name,
 			mimetype: file.type,

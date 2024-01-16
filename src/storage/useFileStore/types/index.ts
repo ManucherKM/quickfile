@@ -49,10 +49,10 @@ export type SendFileAxiosRequestConfig = {
 
 export interface IFileStore {
 	createFileUploadUrl: (
-		fileList: FileList,
+		files: File[],
 	) => Promise<ICreateFileUploadUrlRes | undefined>
 	sendFiles: (
-		files: FileList,
+		files: File[],
 		uploadInfo: IUploadInfo[],
 		config?: SendFileAxiosRequestConfig,
 	) => Promise<void>

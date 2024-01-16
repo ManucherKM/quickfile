@@ -2,7 +2,6 @@ import axios from '@/config/axios'
 import {
 	TWrapperOnUploadProgress,
 	downloadFileFromBuffer,
-	formatFileListToArray,
 	formatFilesForSend,
 	getFormData,
 } from '@/utils'
@@ -18,9 +17,9 @@ import { EFileStoreApiRoutes } from './types'
 
 /** With this hook you can access the file storage. */
 export const useFileStore = create<IFileStore>(() => ({
-	async createFileUploadUrl(fileList) {
+	async createFileUploadUrl(files) {
 		try {
-			const formatedFiles: IFileData[] = formatFilesForSend(fileList)
+			const formatedFiles: IFileData[] = formatFilesForSend(files)
 
 			const { data } = await axios.post<ICreateFileUploadUrlRes>(
 				EFileStoreApiRoutes.archiveManagement,
@@ -32,10 +31,8 @@ export const useFileStore = create<IFileStore>(() => ({
 			console.error(e)
 		}
 	},
-	async sendFiles(selectedFiles, uploadInfo, config) {
+	async sendFiles(files, uploadInfo, config) {
 		try {
-			const files = formatFileListToArray(selectedFiles)
-
 			const uploadPromises = []
 
 			for (let i = 0; i < files.length; i++) {
@@ -57,7 +54,7 @@ export const useFileStore = create<IFileStore>(() => ({
 					}
 				}
 
-				const uploadPromise = axios.post<undefined>(
+				const uploadPromise = axios.post<never>(
 					url,
 					formData,
 					config as AxiosRequestConfig,

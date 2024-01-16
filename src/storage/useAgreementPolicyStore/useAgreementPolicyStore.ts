@@ -5,7 +5,7 @@ import { create } from 'zustand'
 
 const defaultStore = {
 	isAgreed: false,
-	isShow: true,
+	isShow: false,
 } as IAgreementPolicyStore
 
 export const useAgreementPolicyStore = create(
