@@ -67,5 +67,24 @@
 	"i_agree_to_the_terms_of_use": "Я согласен с условиями использования",
 	"confirm": "Подтвердить",
 	"back": "Назад",
-	"usage_policy": "Политика"
+	"usage_policy": "Политика",
+
+	"general_provisions": "Общие положения",
+	"this_section_of_the_usage_policy_hereinafter_referred_to_as_the_policy_defines_the_terms_and_conditions_of_use_of_the_quickfile_service": "Данный раздел политики использования (далее - Политика) определяет условия использования сервиса QuickFile.",
+	"definitions": "Определения",
+	"the_following_terms_are_used_in_this_policy": "В настоящей Политике используются следующие термины:",
+	"service__software_that_provides_file_sharing_and_storage_services": "Сервис - программное обеспечение, предоставляющее услуги по обмену и хранению файлов.",
+	"user__an_individual_or_legal_entity_using_the_service": "Пользователь - физическое или юридическое лицо, использующее сервис.",
+	"administration__persons_who_manage_the_service": "Администрация - лица, осуществляющие управление сервисом.",
+	"responsibility_for_materials": "Ответственность за материалы",
+	"administration_is_not_responsible_for_materials_uploaded_sent_received_by_users_through_the_service_the_user_is_fully_responsible_for_the_content_of_files_uploaded_and_transmitted_by_him": "Администрация не несет ответственности за материалы, загружаемые, отправляемые, полученные Пользователями посредством сервиса. Пользователь несет полную ответственность за содержание загружаемых и передаваемых им файлов.",
+	"in_particular_the_user_is_responsible_for_compliance_with_the_following_requirements": "В частности, Пользователь несет ответственность за соблюдение следующих требований:",
+	"the_content_of_the_files_must_not_contradict_the_legislation_of_the_user's_country": "Содержание файлов не должно противоречить законодательству страны пользователя.",
+	"files_must_not_contain_intellectual_property_the_copying_of_which_is_prohibited_by_the_owners_of_the_original": "Файлы не должны содержать объекты интеллектуальной собственности, копирование которых запрещено владельцами оригинала.",
+	"the_files_must_not_contain_malware": "Файлы не должны содержать вредоносные программы.",
+	"if_the_user_violates_these_requirements_the_administration_has_the_right_to_remove_the_corresponding_files_from_the_service_as_well_as_to_take_the_necessary_measures_to_prevent_repeated_violations_by_the_user": "В случае нарушения Пользователем указанных требований Администрация вправе удалить соответствующие файлы из сервиса, а также принять необходимые меры для пресечения повторных нарушений Пользователем.",
+	"alterations": "Изменения",
+	"the_administration_reserves_the_right_to_make_changes_to_this_policy_without_notifying_users": "Администрация оставляет за собой право вносить изменения в настоящую Политику без уведомления Пользователей.",
+	"expiration_date": "Срок действия",
+	"this_policy_shall_remain_in_effect_indefinitely": "Настоящая Политика действует бессрочно."
 }
