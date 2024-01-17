@@ -66,7 +66,7 @@ function Policy() {
 							children: (
 								<Paragraph>
 									{t(
-										'the_content_of_the_files_must_not_contradict_the_legislation_of_the_user',
+										"the_content_of_the_files_must_not_contradict_the_legislation_of_the_user's_country",
 									)}
 								</Paragraph>
 							),

@@ -1,5 +1,6 @@
 import { IProgressEvent } from '@/storage/useFileStore/types'
 import {
+	getFileListSize,
 	getFormatedFileSize,
 	getFormatedProgress,
 	getFormatedTimer,
@@ -20,8 +21,13 @@ export function useFileLoadInfo(files: FileList | null): IUploadInfo {
 	const [size, setSize] = useState<number | null>(null)
 	const [count, setCount] = useState<number | undefined>()
 
+	let lastDate = Date.now()
+
 	function onUploadProgress(event: IProgressEvent) {
-		setSize(event.total)
+		if (Date.now() - lastDate < 1000) return
+
+		lastDate = Date.now()
+
 		setProgress(event.progress)
 		setTime(event.estimated)
 	}
@@ -30,7 +36,15 @@ export function useFileLoadInfo(files: FileList | null): IUploadInfo {
 		if (!files) return
 
 		setCount(files.length)
+
+		const totalSize = getFileListSize(files)
+
+		if (totalSize) {
+			setSize(totalSize)
+		}
 	}, [files])
+
+	// console.log(count, percent, size, time)
 
 	return {
 		count,
