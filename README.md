@@ -17,3 +17,5 @@
 ![Prettier](https://img.shields.io/badge/-Prettier-000?style=for-the-badge&logo=Prettier&logoColor=426675)
 
 ## Preview
+
+https://github.com/ManucherKM/quickfile/assets/91463158/61fce38c-55a7-4ad6-b4bf-76f132a0a618
