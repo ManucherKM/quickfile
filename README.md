@@ -1,4 +1,4 @@
-![Banner](https://github.com/ManucherKM/quickfile/blob/master/preview/Banner.png?raw=true)
+![Banner](https://github.com/ManucherKM/quickfile/assets/91463158/120a256f-bdb2-445e-bf8b-5303c20dc335)
 
 # 💿 Quick file | Beta testing.
 
@@ -16,7 +16,7 @@
 
 ## Preview
 
-
+https://github.com/ManucherKM/quickfile/assets/91463158/61fce38c-55a7-4ad6-b4bf-76f132a0a618
 
 ## Demo
 
