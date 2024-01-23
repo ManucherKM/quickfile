@@ -71,6 +71,7 @@ export const Mobile: FC<IMobile> = ({ links }) => {
 						ref={burgerRef}
 						onFocus={burgerFocusHandler}
 						className={classes.burger}
+						aria-label={t('burger')}
 					>
 						<svg
 							width="22"
