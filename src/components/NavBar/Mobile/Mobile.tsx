@@ -1,5 +1,6 @@
 import { List } from '@/components/List'
 import clsx from 'clsx'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { FC, useEffect, useRef, useState } from 'react'
 import { ILink } from '../types'
@@ -10,8 +11,10 @@ export interface IMobile {
 }
 
 export const Mobile: FC<IMobile> = ({ links }) => {
+	const t = useTranslations()
 	const [isShow, setIsShow] = useState<boolean>(false)
 	const linksBlockRef = useRef<HTMLDivElement | null>(null)
+	const burgerRef = useRef<HTMLButtonElement | null>(null)
 
 	function checkOutsideClick(event: MouseEvent) {
 		const isContain = linksBlockRef.current?.contains(event.target as Node)
@@ -19,6 +22,10 @@ export const Mobile: FC<IMobile> = ({ links }) => {
 		if (isContain) return
 
 		setIsShow(false)
+
+		if (burgerRef.current) {
+			burgerRef.current.blur()
+		}
 	}
 
 	function burgerFocusHandler() {
@@ -43,7 +50,7 @@ export const Mobile: FC<IMobile> = ({ links }) => {
 			<div className="container">
 				<div className={classes.controlls}>
 					<div>
-						<Link href={'/'}>
+						<Link href={'/'} aria-label={t('home')}>
 							<svg
 								width="40"
 								height="40"
@@ -60,7 +67,11 @@ export const Mobile: FC<IMobile> = ({ links }) => {
 						</Link>
 					</div>
 
-					<button onFocus={burgerFocusHandler} className={classes.burger}>
+					<button
+						ref={burgerRef}
+						onFocus={burgerFocusHandler}
+						className={classes.burger}
+					>
 						<svg
 							width="22"
 							height="16"

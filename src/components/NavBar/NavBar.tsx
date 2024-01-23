@@ -2,7 +2,7 @@
 
 import { addSmoothScrollToLinks, removeSmoothScrollToLinks } from '@/utils'
 import { useTranslations } from 'next-intl'
-import { useEffect, type FC } from 'react'
+import { useEffect, useState, type FC } from 'react'
 import { Computer } from './Computer/Computer'
 import { Mobile } from './Mobile/Mobile'
 import { ILink } from './types'
@@ -13,6 +13,7 @@ export interface INavBar {
 
 export const NavBar: FC<INavBar> = ({ locale }) => {
 	const t = useTranslations()
+	const [isMobile, setIsMobile] = useState<boolean>(false)
 
 	const links: ILink[] = [
 		{
@@ -33,8 +34,8 @@ export const NavBar: FC<INavBar> = ({ locale }) => {
 
 	return (
 		<>
-			<Computer links={links} />
 			<Mobile links={links} />
+			<Computer links={links} />
 		</>
 	)
 }

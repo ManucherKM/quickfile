@@ -1,4 +1,5 @@
 import { List } from '@/components/List'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { FC } from 'react'
 import { ILink } from '../types'
@@ -9,11 +10,12 @@ export interface IComputer {
 }
 
 export const Computer: FC<IComputer> = ({ links }) => {
+	const t = useTranslations()
 	return (
 		<nav className={classes.root}>
 			<div className="container">
 				<div className={classes.wrapper}>
-					<Link href={'/'}>
+					<Link href={'/'} aria-label={t('home')}>
 						<svg
 							width="40"
 							height="40"

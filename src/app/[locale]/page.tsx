@@ -59,9 +59,9 @@ function Home({ params: { locale } }: IHome) {
 		<FileLoaderProvider>
 			<DragAndDropProvider>
 				<AgreementPolicyProvider locale={locale}>
-					<SlidingLeft>
-						<NavBar locale={locale} />
-					</SlidingLeft>
+					{/* <SlidingBottom> */}
+					<NavBar locale={locale} />
+					{/* </SlidingBottom> */}
 
 					<main className={styles}>
 						<SlidingLeft>
