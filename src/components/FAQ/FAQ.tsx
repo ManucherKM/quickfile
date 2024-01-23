@@ -1,6 +1,7 @@
 import { Accordion, IAccordionItem, Paragraph, Title } from 'kuui-react'
 import { useTranslations } from 'next-intl'
 import { FC } from 'react'
+import { SlidingLeft } from '..'
 import classes from './FAQ.module.scss'
 
 export const FAQ: FC = () => {
@@ -73,15 +74,20 @@ export const FAQ: FC = () => {
 
 	return (
 		<div id="FAQ" className={classes.root}>
-			<Title
-				style={{
-					fontSize: '2rem',
-				}}
-				align="center"
-			>
-				{t('faq')}
-			</Title>
-			<Accordion items={accordionItems} />
+			<SlidingLeft>
+				<Title
+					style={{
+						fontSize: '2rem',
+					}}
+					align="center"
+				>
+					{t('faq')}
+				</Title>
+			</SlidingLeft>
+
+			<SlidingLeft>
+				<Accordion items={accordionItems} />
+			</SlidingLeft>
 		</div>
 	)
 }
