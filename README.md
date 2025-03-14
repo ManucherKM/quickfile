@@ -18,10 +18,6 @@
 
 https://github.com/ManucherKM/quickfile/assets/91463158/61fce38c-55a7-4ad6-b4bf-76f132a0a618
 
-## Demo
-
-[Demo](https://quickfile.site)
-
 ## Related
 
 [UIkit](https://github.com/ManucherKM/kuui)
